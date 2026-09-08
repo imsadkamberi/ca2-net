@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA2-NET — Aplikacione të personalizuara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:     #1B2340;
+    --paper:   #F5F3ED;
+    --slate:   #3A3D4A;
+    --amber:   #E8A33D;
+    --line:    rgba(27,35,64,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--slate);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--ink); margin:0; font-weight:600;
+  }
+  a{color:inherit;}
+
+  header{
+    position:sticky; top:0; z-index:10;
+    background:var(--paper); border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem 1.5rem;
+  }
+  .logo{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.25rem; color:var(--ink);}
+  .logo span{color:var(--amber);}
+  nav ul{list-style:none; display:flex; gap:2rem; margin:0; padding:0;}
+  nav a{text-decoration:none; font-size:0.95rem; border-bottom:1px solid transparent; padding-bottom:2px;}
+  nav a:hover{border-color:var(--amber);}
+  .nav-cta{
+    background:var(--ink); color:var(--paper); padding:0.5rem 1.1rem;
+    text-decoration:none; font-size:0.9rem; font-weight:500;
+  }
+
+  section{max-width:1120px; margin:0 auto; padding:4rem 1.5rem;}
+  .divider{max-width:1120px; margin:0 auto; border:none; border-top:1px solid var(--line);}
+
+  /* Hero */
+  .hero{
+    position:relative; overflow:hidden;
+    padding-top:5rem; padding-bottom:4rem;
+    background-image:radial-gradient(rgba(27,35,64,0.14) 1px, transparent 1px);
+    background-size:22px 22px;
+    background-position:-6px -6px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-120px; right:-140px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(232,163,61,0.35), rgba(232,163,61,0) 70%);
+    z-index:0;
+  }
+  .hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.3fr 0.7fr; gap:3rem; align-items:end;}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,3.6rem); line-height:1.08; max-width:14ch;}
+  .hero .lede{margin-top:1.2rem; max-width:42ch; font-size:1.08rem;}
+  .hero-note{
+    border-left:3px solid var(--amber); padding-left:1.1rem;
+    font-family:'Space Grotesk', sans-serif; font-size:1rem; color:var(--ink);
+    margin-bottom:1.4rem;
+  }
+  .hero-art{position:relative; z-index:1; width:100%; height:auto;}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr;} .hero-art{display:none;}}
+
+  /* Section head */
+  .section-head{display:grid; grid-template-columns:220px 1fr; gap:2rem; margin-bottom:2.4rem;}
+  .section-head h2{font-size:1.7rem;}
+  .section-head .intro{max-width:52ch;}
+  @media(max-width:760px){.section-head{grid-template-columns:1fr;}}
+
+  /* Shërbimet */
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+  .service{
+    padding:1.6rem 1.4rem 1.6rem 0;
+    border-top:1px solid var(--line);
+  }
+  .service:nth-child(3n+2){padding-left:1.4rem; border-left:1px solid var(--line); border-right:1px solid var(--line);}
+  .service:nth-child(3n){padding-left:1.4rem;}
+  .service h3{font-size:1.1rem; margin-bottom:0.5rem;}
+  .service p{margin:0; font-size:0.94rem;}
+  @media(max-width:760px){
+    .services{grid-template-columns:1fr;}
+    .service, .service:nth-child(3n+2), .service:nth-child(3n){
+      border-left:none; border-right:none; padding-left:0;
+    }
+  }
+
+  /* Si punojmë */
+  .process{display:flex; flex-direction:column;}
+  .step{
+    display:grid; grid-template-columns:60px 1fr; gap:1.3rem;
+    padding:1.3rem 0; border-bottom:1px solid var(--line);
+  }
+  .step:first-child{border-top:1px solid var(--line);}
+  .step .num{font-family:'Space Grotesk', sans-serif; color:var(--amber); font-size:1.3rem;}
+  .step h3{font-size:1.05rem; margin-bottom:0.3rem;}
+  .step p{margin:0; font-size:0.94rem;}
+
+  /* Çmime */
+  .pricing-box{
+    background:var(--ink); color:var(--paper);
+    padding:2.4rem; display:grid; grid-template-columns:1.4fr 1fr; gap:2rem; align-items:center;
+  }
+  .pricing-box h3{color:var(--paper); font-size:1.4rem; max-width:20ch;}
+  .pricing-box p{color:#C9CCDA; margin-top:0.7rem; max-width:44ch;}
+  .pricing-box .cta{
+    background:var(--amber); color:var(--ink); text-decoration:none;
+    padding:0.85rem 1.5rem; font-weight:600; font-family:'Space Grotesk', sans-serif;
+    text-align:center; display:inline-block;
+  }
+  @media(max-width:760px){.pricing-box{grid-template-columns:1fr;}}
+
+  /* Kontakt */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .field{margin-bottom:1.1rem;}
+  label{display:block; font-size:0.85rem; color:var(--slate); margin-bottom:0.3rem;}
+  input, textarea{
+    width:100%; padding:0.65rem 0.75rem; border:1px solid var(--line);
+    background:#fff; font-family:inherit; font-size:0.95rem; color:var(--ink);
+  }
+  button{
+    background:var(--ink); color:var(--paper); border:none;
+    padding:0.75rem 1.5rem; font-family:'Space Grotesk',sans-serif; font-size:0.95rem;
+    font-weight:500; cursor:pointer;
+  }
+  .info-list{list-style:none; padding:0; margin:0;}
+  .info-list li{padding:0.7rem 0; border-bottom:1px solid var(--line);}
+  .info-list .label{color:var(--slate); font-size:0.85rem; display:block; margin-bottom:0.15rem;}
+  .info-list .value{color:var(--ink); font-family:'Space Grotesk', sans-serif; font-size:1.05rem;}
+
+  footer{
+    background:var(--ink); color:#9FA4BE;
+    padding:2rem 1.5rem; text-align:center; font-size:0.85rem;
+  }
+  footer span{color:var(--amber);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">CA2<span>-</span>NET</div>
+    <nav>
+      <ul>
+        <li><a href="#sherbimet">Shërbimet</a></li>
+        <li><a href="#si-punojme">Si punojmë</a></li>
+        <li><a href="#cmimet">Çmimet</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#kontakt">Kontakto</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1>Aplikacione të personalizuara, ndërtuar për nevojat tua.</h1>
+      <p class="lede">CA2-NET krijon software profesional — nga ideja te produkti final — me çmime të volitshme dhe komunikim të drejtpërdrejtë gjatë gjithë procesit.</p>
+    </div>
+    <div>
+      <div class="hero-note">
+        Çdo projekt fillon me një bisedë të thjeshtë. Na kontakto dhe flasim për atë që të duhet.
+      </div>
+      <svg class="hero-art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- dritarja e pasme -->
+        <rect x="70" y="10" width="220" height="150" rx="10" fill="#FFFFFF" stroke="#1B2340" stroke-opacity="0.12"/>
+        <rect x="70" y="10" width="220" height="26" rx="10" fill="#1B2340" fill-opacity="0.08"/>
+        <circle cx="84" cy="23" r="3.5" fill="#E8A33D"/>
+        <circle cx="96" cy="23" r="3.5" fill="#1B2340" fill-opacity="0.25"/>
+        <circle cx="108" cy="23" r="3.5" fill="#1B2340" fill-opacity="0.25"/>
+        <rect x="86" y="52" width="120" height="10" rx="3" fill="#1B2340" fill-opacity="0.18"/>
+        <rect x="86" y="72" width="180" height="8" rx="3" fill="#1B2340" fill-opacity="0.12"/>
+        <rect x="86" y="88" width="150" height="8" rx="3" fill="#1B2340" fill-opacity="0.12"/>
+        <rect x="86" y="112" width="70" height="24" rx="5" fill="#E8A33D"/>
+
+        <!-- dritarja e përparme (kod) -->
+        <rect x="20" y="110" width="200" height="140" rx="10" fill="#1B2340"/>
+        <circle cx="38" cy="128" r="3.5" fill="#E8A33D"/>
+        <circle cx="50" cy="128" r="3.5" fill="#F5F3ED" fill-opacity="0.4"/>
+        <circle cx="62" cy="128" r="3.5" fill="#F5F3ED" fill-opacity="0.4"/>
+        <rect x="36" y="150" width="60" height="7" rx="2" fill="#E8A33D"/>
+        <rect x="36" y="166" width="150" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.55"/>
+        <rect x="52" y="182" width="120" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.35"/>
+        <rect x="52" y="198" width="90" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.35"/>
+        <rect x="36" y="214" width="70" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.55"/>
+        <rect x="36" y="230" width="130" height="7" rx="2" fill="#E8A33D" fill-opacity="0.7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="sherbimet">
+  <div class="section-head">
+    <h2>Shërbimet</h2>
+    <p class="intro">Zhvillojmë zgjidhje software sipas kërkesave specifike të çdo klienti, pa shabllone të gatshme.</p>
+  </div>
+  <div class="services">
+    <div class="service">
+      <h3>Aplikacione desktop</h3>
+      <p>Programe të personalizuara për menaxhim biznesi, magazina, klientë apo procese të brendshme.</p>
+    </div>
+    <div class="service">
+      <h3>Faqe interneti</h3>
+      <p>Sajte profesionale për biznese, portofolio apo prezantim shërbimesh — të shpejta dhe të lehta për t'u mirëmbajtur.</p>
+    </div>
+    <div class="service">
+      <h3>Automatizime</h3>
+      <p>Skripte dhe mjete që kursejnë kohë duke automatizuar punë të përsëritura.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="si-punojme">
+  <div class="section-head">
+    <h2>Si punojmë</h2>
+    <p class="intro">Proces i thjeshtë, pa burokraci — nga ideja te aplikacioni gati për përdorim.</p>
+  </div>
+  <div class="process">
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h3>Na kontakto</h3>
+        <p>Na shpjegon shkurt çfarë të duhet — nuk ka nevojë për specifikim teknik.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h3>Ofertë dhe afat</h3>
+        <p>Brenda pak ditësh të japim një çmim të qartë dhe kohën e nevojshme për ta përfunduar.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h3>Zhvillimi</h3>
+        <p>Ndërtojmë aplikacionin dhe të mbajmë të informuar për ecurinë.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <h3>Dorëzimi</h3>
+        <p>Të dorëzojmë produktin final, gati për përdorim, me mbështetje pas dorëzimit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="cmimet">
+  <div class="pricing-box">
+    <div>
+      <h3>Çmime të volitshme, të përshtatura për çdo buxhet.</h3>
+      <p>Çdo projekt është i ndryshëm, prandaj çmimi caktohet pas një bisede të shkurtër për të kuptuar saktësisht çfarë të duhet.</p>
+    </div>
+    <a class="cta" href="#kontakt">Kërko një ofertë</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="kontakt">
+  <div class="section-head">
+    <h2>Kontakt</h2>
+    <p class="intro">Mjafton të na shkruash — pjesën tjetër e menaxhojmë ne.</p>
+  </div>
+  <div class="contact-grid">
+    <form onsubmit="event.preventDefault(); alert('Mesazhi u përgatit — lidhe formën me email ose server për ta dërguar.');">
+      <div class="field">
+        <label for="emri">Emri</label>
+        <input id="emri" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="mesazhi">Çfarë të duhet?</label>
+        <textarea id="mesazhi" rows="4" required></textarea>
+      </div>
+      <button type="submit">Dërgo kërkesën</button>
+    </form>
+    <ul class="info-list">
+      <li>
+        <span class="label">Email</span>
+        <span class="value">info@ca2-net.com</span>
+      </li>
+      <li>
+        <span class="label">Përgjigje</span>
+        <span class="value">Brenda 24-48 orëve</span>
+      </li>
+      <li>
+        <span class="label">Zona e shërbimit</span>
+        <span class="value">Online, kudo</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 CA2<span>-</span>NET — Aplikacione të personalizuara
+</footer>
+
+</body>
+</html>
