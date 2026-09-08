@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA2-NET — Aplikacione të personalizuara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:     #1B2340;
+    --paper:   #F5F3ED;
+    --slate:   #3A3D4A;
+    --amber:   #E8A33D;
+    --line:    rgba(27,35,64,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--slate);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--ink); margin:0; font-weight:600;
+  }
+  a{color:inherit;}
+
+  header{
+    position:sticky; top:0; z-index:10;
+    background:var(--paper); border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem 1.5rem;
+    gap:1rem;
+  }
+  .logo{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.25rem; color:var(--ink);}
+  .logo span{color:var(--amber);}
+  nav ul{list-style:none; display:flex; gap:2rem; margin:0; padding:0;}
+  nav a{text-decoration:none; font-size:0.95rem; border-bottom:1px solid transparent; padding-bottom:2px;}
+  nav a:hover{border-color:var(--amber);}
+  .nav-right{display:flex; align-items:center; gap:1rem;}
+  .nav-cta{
+    background:var(--ink); color:var(--paper); padding:0.5rem 1.1rem;
+    text-decoration:none; font-size:0.9rem; font-weight:500;
+  }
+  .lang-switch{
+    display:flex; border:1px solid var(--line); overflow:hidden;
+  }
+  .lang-switch button{
+    background:transparent; border:none; cursor:pointer;
+    font-family:'Space Grotesk', sans-serif; font-size:0.82rem;
+    padding:0.4rem 0.65rem; color:var(--slate);
+  }
+  .lang-switch button.active{
+    background:var(--ink); color:var(--paper);
+  }
+
+  section{max-width:1120px; margin:0 auto; padding:4rem 1.5rem;}
+  .divider{max-width:1120px; margin:0 auto; border:none; border-top:1px solid var(--line);}
+
+  /* Hero */
+  .hero{
+    position:relative; overflow:hidden;
+    padding-top:5rem; padding-bottom:4rem;
+    background-image:radial-gradient(rgba(27,35,64,0.14) 1px, transparent 1px);
+    background-size:22px 22px;
+    background-position:-6px -6px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-120px; right:-140px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(232,163,61,0.35), rgba(232,163,61,0) 70%);
+    z-index:0;
+  }
+  .hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.3fr 0.7fr; gap:3rem; align-items:end;}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,3.6rem); line-height:1.08; max-width:14ch;}
+  .hero .lede{margin-top:1.2rem; max-width:42ch; font-size:1.08rem;}
+  .hero-note{
+    border-left:3px solid var(--amber); padding-left:1.1rem;
+    font-family:'Space Grotesk', sans-serif; font-size:1rem; color:var(--ink);
+    margin-bottom:1.4rem;
+  }
+  .hero-art{position:relative; z-index:1; width:100%; height:auto;}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr;} .hero-art{display:none;}}
+
+  /* Section head */
+  .section-head{display:grid; grid-template-columns:220px 1fr; gap:2rem; margin-bottom:2.4rem;}
+  .section-head h2{font-size:1.7rem;}
+  .section-head .intro{max-width:52ch;}
+  @media(max-width:760px){.section-head{grid-template-columns:1fr;}}
+
+  /* Shërbimet — pamje "dritare aplikacioni" */
+  .menu-list{display:flex; flex-direction:column; gap:1.1rem;}
+  .win-card{
+    border:1px solid var(--line);
+    background:#fff;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    will-change:transform;
+  }
+  .win-card:hover{
+    transform:translateY(-6px) scale(1.015);
+    box-shadow:0 18px 34px rgba(27,35,64,0.14);
+    border-color:rgba(27,35,64,0.28);
+  }
+  .win-card:hover .svc-icon{
+    transform:scale(1.12) rotate(-3deg);
+  }
+  .svc-icon{
+    transition:transform 0.3s ease;
+  }
+  .win-card:hover .win-controls .win-close{
+    transform:scale(1.15);
+  }
+  .win-titlebar{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--ink);
+    padding:0.55rem 0.8rem;
+  }
+  .win-titlebar .win-title{
+    display:flex; align-items:center; gap:0.5rem;
+    font-family:'Space Grotesk', sans-serif; font-size:0.88rem;
+    color:var(--paper);
+  }
+  .win-titlebar .win-num{color:var(--amber);}
+  .win-controls{display:flex; align-items:center; gap:0.85rem;}
+  .win-controls span{
+    display:inline-block; position:relative;
+    width:11px; height:11px;
+  }
+  .win-controls .win-min::before{
+    content:""; position:absolute; left:0; bottom:1px;
+    width:9px; height:1.4px; background:#C9CCDA;
+  }
+  .win-controls .win-max{border:1.4px solid #C9CCDA;}
+  .win-controls .win-close::before,
+  .win-controls .win-close::after{
+    content:""; position:absolute; top:50%; left:50%;
+    width:12px; height:1.4px; background:#C9CCDA;
+  }
+  .win-controls .win-close::before{transform:translate(-50%,-50%) rotate(45deg);}
+  .win-controls .win-close::after{transform:translate(-50%,-50%) rotate(-45deg);}
+  .win-body{padding:1.3rem 1.4rem 1.5rem;}
+  .win-body .svc-icon{
+    width:40px; height:40px; margin-bottom:0.8rem;
+  }
+  .win-body h3{font-size:1.1rem; margin-bottom:0.5rem;}
+  .win-body p{margin:0 0 0.9rem; font-size:0.94rem; max-width:56ch;}
+  .win-body .menu-tag{
+    display:inline-block;
+    font-family:'Space Grotesk', sans-serif; font-size:0.82rem;
+    color:var(--ink); background:rgba(232,163,61,0.18);
+    padding:0.3rem 0.7rem;
+  }
+
+  /* Si punojmë */
+  .process{display:flex; flex-direction:column;}
+  .step{
+    display:grid; grid-template-columns:60px 1fr; gap:1.3rem;
+    padding:1.3rem 0; border-bottom:1px solid var(--line);
+  }
+  .step:first-child{border-top:1px solid var(--line);}
+  .step .num{font-family:'Space Grotesk', sans-serif; color:var(--amber); font-size:1.3rem;}
+  .step h3{font-size:1.05rem; margin-bottom:0.3rem;}
+  .step p{margin:0; font-size:0.94rem;}
+
+  /* Çmime */
+  .pricing-box{
+    background:var(--ink); color:var(--paper);
+    padding:2.4rem; display:grid; grid-template-columns:1.4fr 1fr; gap:2rem; align-items:center;
+  }
+  .pricing-box h3{color:var(--paper); font-size:1.4rem; max-width:20ch;}
+  .pricing-box p{color:#C9CCDA; margin-top:0.7rem; max-width:44ch;}
+  .pricing-box .cta{
+    background:var(--amber); color:var(--ink); text-decoration:none;
+    padding:0.85rem 1.5rem; font-weight:600; font-family:'Space Grotesk', sans-serif;
+    text-align:center; display:inline-block;
+  }
+  @media(max-width:760px){.pricing-box{grid-template-columns:1fr;}}
+
+  /* Kontakt */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .field{margin-bottom:1.1rem;}
+  label{display:block; font-size:0.85rem; color:var(--slate); margin-bottom:0.3rem;}
+  input, textarea{
+    width:100%; padding:0.65rem 0.75rem; border:1px solid var(--line);
+    background:#fff; font-family:inherit; font-size:0.95rem; color:var(--ink);
+  }
+  button{
+    background:var(--ink); color:var(--paper); border:none;
+    padding:0.75rem 1.5rem; font-family:'Space Grotesk',sans-serif; font-size:0.95rem;
+    font-weight:500; cursor:pointer;
+  }
+  .info-list{list-style:none; padding:0; margin:0;}
+  .info-list li{padding:0.7rem 0; border-bottom:1px solid var(--line);}
+  .info-list .label{color:var(--slate); font-size:0.85rem; display:block; margin-bottom:0.15rem;}
+  .info-list .value{color:var(--ink); font-family:'Space Grotesk', sans-serif; font-size:1.05rem;}
+
+  footer{
+    background:var(--ink); color:#9FA4BE;
+    padding:2rem 1.5rem; text-align:center; font-size:0.85rem;
+  }
+  footer span{color:var(--amber);}
+
+  @media(max-width:600px){
+    .nav-wrap{flex-wrap:wrap;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">CA2<span>-</span>NET</div>
+    <nav>
+      <ul>
+        <li><a href="#sherbimet" data-i18n="nav_services">Shërbimet</a></li>
+        <li><a href="#si-punojme" data-i18n="nav_process">Si punojmë</a></li>
+        <li><a href="#cmimet" data-i18n="nav_pricing">Çmimet</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="sq" class="active">SQ</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="nav-cta" href="#kontakt" data-i18n="nav_cta">Kontakto</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1 data-i18n="hero_title">Aplikacione të personalizuara, ndërtuar për nevojat tua.</h1>
+      <p class="lede" data-i18n="hero_lede">CA2-NET krijon software profesional — nga ideja te produkti final — me çmime të volitshme dhe komunikim të drejtpërdrejtë gjatë gjithë procesit.</p>
+    </div>
+    <div>
+      <div class="hero-note" data-i18n="hero_note">
+        Çdo projekt fillon me një bisedë të thjeshtë. Na kontakto dhe flasim për atë që të duhet.
+      </div>
+      <svg class="hero-art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+        <rect x="70" y="10" width="220" height="150" rx="10" fill="#FFFFFF" stroke="#1B2340" stroke-opacity="0.12"/>
+        <rect x="70" y="10" width="220" height="26" rx="10" fill="#1B2340" fill-opacity="0.08"/>
+        <circle cx="84" cy="23" r="3.5" fill="#E8A33D"/>
+        <circle cx="96" cy="23" r="3.5" fill="#1B2340" fill-opacity="0.25"/>
+        <circle cx="108" cy="23" r="3.5" fill="#1B2340" fill-opacity="0.25"/>
+        <rect x="86" y="52" width="120" height="10" rx="3" fill="#1B2340" fill-opacity="0.18"/>
+        <rect x="86" y="72" width="180" height="8" rx="3" fill="#1B2340" fill-opacity="0.12"/>
+        <rect x="86" y="88" width="150" height="8" rx="3" fill="#1B2340" fill-opacity="0.12"/>
+        <rect x="86" y="112" width="70" height="24" rx="5" fill="#E8A33D"/>
+        <rect x="20" y="110" width="200" height="140" rx="10" fill="#1B2340"/>
+        <circle cx="38" cy="128" r="3.5" fill="#E8A33D"/>
+        <circle cx="50" cy="128" r="3.5" fill="#F5F3ED" fill-opacity="0.4"/>
+        <circle cx="62" cy="128" r="3.5" fill="#F5F3ED" fill-opacity="0.4"/>
+        <rect x="36" y="150" width="60" height="7" rx="2" fill="#E8A33D"/>
+        <rect x="36" y="166" width="150" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.55"/>
+        <rect x="52" y="182" width="120" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.35"/>
+        <rect x="52" y="198" width="90" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.35"/>
+        <rect x="36" y="214" width="70" height="7" rx="2" fill="#F5F3ED" fill-opacity="0.55"/>
+        <rect x="36" y="230" width="130" height="7" rx="2" fill="#E8A33D" fill-opacity="0.7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="sherbimet">
+  <div class="section-head">
+    <h2 data-i18n="services_h2">Shërbimet</h2>
+    <p class="intro" data-i18n="services_intro">Zhvillojmë zgjidhje software sipas kërkesave specifike të çdo klienti, pa shabllone të gatshme.</p>
+  </div>
+  <div class="menu-list">
+    <div class="win-card">
+      <div class="win-titlebar">
+        <div class="win-title"><span class="win-num">01</span> <span data-i18n="svc1_title">Aplikacione desktop</span></div>
+        <div class="win-controls">
+          <span class="win-min"></span>
+          <span class="win-max"></span>
+          <span class="win-close"></span>
+        </div>
+      </div>
+      <div class="win-body">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="9" width="34" height="22" rx="2.5" stroke="#1B2340" stroke-width="2"/>
+          <line x1="19" y1="38" x2="29" y2="38" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="31" x2="24" y2="38" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="20" r="5" stroke="#5F9E7A" stroke-width="2"/>
+          <path d="M20.5 20h7M24 16.5v7" stroke="#5F9E7A" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3 data-i18n="svc1_title">Aplikacione desktop</h3>
+        <p data-i18n="svc1_desc">Programe të personalizuara për menaxhim biznesi, magazina, klientë apo procese të brendshme.</p>
+        <span class="menu-tag" data-i18n="menu_tag">Sipas porosisë</span>
+      </div>
+    </div>
+
+    <div class="win-card">
+      <div class="win-titlebar">
+        <div class="win-title"><span class="win-num">02</span> <span data-i18n="svc2_title">Faqe interneti</span></div>
+        <div class="win-controls">
+          <span class="win-min"></span>
+          <span class="win-max"></span>
+          <span class="win-close"></span>
+        </div>
+      </div>
+      <div class="win-body">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="16" stroke="#1B2340" stroke-width="2"/>
+          <ellipse cx="24" cy="24" rx="7" ry="16" stroke="#1B2340" stroke-width="2"/>
+          <line x1="8" y1="24" x2="40" y2="24" stroke="#1B2340" stroke-width="2"/>
+          <line x1="10.5" y1="16" x2="37.5" y2="16" stroke="#1B2340" stroke-width="1.6"/>
+          <line x1="10.5" y1="32" x2="37.5" y2="32" stroke="#1B2340" stroke-width="1.6"/>
+          <circle cx="24" cy="24" r="4" fill="#5F9E7A"/>
+        </svg>
+        <h3 data-i18n="svc2_title">Faqe interneti</h3>
+        <p data-i18n="svc2_desc">Sajte profesionale për biznese, portofolio apo prezantim shërbimesh — të shpejta dhe të lehta për t'u mirëmbajtur.</p>
+        <span class="menu-tag" data-i18n="menu_tag">Sipas porosisë</span>
+      </div>
+    </div>
+
+    <div class="win-card">
+      <div class="win-titlebar">
+        <div class="win-title"><span class="win-num">03</span> <span data-i18n="svc3_title">Automatizime</span></div>
+        <div class="win-controls">
+          <span class="win-min"></span>
+          <span class="win-max"></span>
+          <span class="win-close"></span>
+        </div>
+      </div>
+      <div class="win-body">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="17" width="20" height="16" rx="4" stroke="#1B2340" stroke-width="2"/>
+          <line x1="24" y1="10" x2="24" y2="17" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="8" r="2.2" fill="#5F9E7A"/>
+          <circle cx="20" cy="25" r="2.4" fill="#5F9E7A"/>
+          <circle cx="28" cy="25" r="2.4" fill="#5F9E7A"/>
+          <line x1="19" y1="30" x2="29" y2="30" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <line x1="8" y1="22" x2="14" y2="22" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <line x1="34" y1="22" x2="40" y2="22" stroke="#1B2340" stroke-width="2" stroke-linecap="round"/>
+          <path d="M17 33v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3" stroke="#1B2340" stroke-width="2"/>
+        </svg>
+        <h3 data-i18n="svc3_title">Automatizime</h3>
+        <p data-i18n="svc3_desc">Skripte dhe mjete që kursejnë kohë duke automatizuar punë të përsëritura.</p>
+        <span class="menu-tag" data-i18n="menu_tag">Sipas porosisë</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="si-punojme">
+  <div class="section-head">
+    <h2 data-i18n="process_h2">Si punojmë</h2>
+    <p class="intro" data-i18n="process_intro">Proces i thjeshtë, pa burokraci — nga ideja te aplikacioni gati për përdorim.</p>
+  </div>
+  <div class="process">
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h3 data-i18n="step1_title">Na kontakto</h3>
+        <p data-i18n="step1_desc">Na shpjegon shkurt çfarë të duhet — nuk ka nevojë për specifikim teknik.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h3 data-i18n="step2_title">Ofertë dhe afat</h3>
+        <p data-i18n="step2_desc">Brenda pak ditësh të japim një çmim të qartë dhe kohën e nevojshme për ta përfunduar.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h3 data-i18n="step3_title">Zhvillimi</h3>
+        <p data-i18n="step3_desc">Ndërtojmë aplikacionin dhe të mbajmë të informuar për ecurinë.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <h3 data-i18n="step4_title">Dorëzimi</h3>
+        <p data-i18n="step4_desc">Të dorëzojmë produktin final, gati për përdorim, me mbështetje pas dorëzimit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="cmimet">
+  <div class="pricing-box">
+    <div>
+      <h3 data-i18n="pricing_title">Çmime të volitshme, të përshtatura për çdo buxhet.</h3>
+      <p data-i18n="pricing_desc">Çdo projekt është i ndryshëm, prandaj çmimi caktohet pas një bisede të shkurtër për të kuptuar saktësisht çfarë të duhet.</p>
+    </div>
+    <a class="cta" href="#kontakt" data-i18n="pricing_cta">Kërko një ofertë</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="kontakt">
+  <div class="section-head">
+    <h2 data-i18n="contact_h2">Kontakt</h2>
+    <p class="intro" data-i18n="contact_intro">Mjafton të na shkruash — pjesën tjetër e menaxhojmë ne.</p>
+  </div>
+  <div class="contact-grid">
+    <form id="contact-form" onsubmit="return sendViaMailto(event);">
+      <div class="field">
+        <label for="emri" data-i18n="label_name">Emri</label>
+        <input id="emri" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email" data-i18n="label_email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="mesazhi" data-i18n="label_message">Çfarë të duhet?</label>
+        <textarea id="mesazhi" rows="4" required></textarea>
+      </div>
+      <button type="submit" data-i18n="btn_send">Dërgo kërkesën</button>
+    </form>
+    <ul class="info-list">
+      <li>
+        <span class="label" data-i18n="info_email_label">Email</span>
+        <span class="value">ca2-net@hotmail.com</span>
+      </li>
+      <li>
+        <span class="label" data-i18n="info_reply_label">Përgjigje</span>
+        <span class="value" data-i18n="info_reply_value">Brenda 24-48 orëve</span>
+      </li>
+      <li>
+        <span class="label" data-i18n="info_area_label">Zona e shërbimit</span>
+        <span class="value" data-i18n="info_area_value">Online, kudo</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 CA2<span>-</span>NET — <span data-i18n="footer_tag">Aplikacione të personalizuara</span>
+</footer>
+
+<script>
+  function sendViaMailto(e){
+    e.preventDefault();
+    const emri = document.getElementById('emri').value;
+    const email = document.getElementById('email').value;
+    const mesazhi = document.getElementById('mesazhi').value;
+    const subject = 'Kërkesë e re nga ' + emri + ' — CA2-NET';
+    const body =
+      'Emri: ' + emri + '\n' +
+      'Email: ' + email + '\n\n' +
+      'Mesazhi:\n' + mesazhi;
+    window.location.href =
+      'mailto:ca2-net@hotmail.com' +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+    return false;
+  }
+
+  window.__ca2Lang = 'sq';
+  const translations = {
+    nav_services:   { sq:"Shërbimet", en:"Services" },
+    nav_process:    { sq:"Si punojmë", en:"How we work" },
+    nav_pricing:    { sq:"Çmimet", en:"Pricing" },
+    nav_cta:        { sq:"Kontakto", en:"Contact us" },
+    hero_title:     { sq:"Aplikacione të personalizuara, ndërtuar për nevojat tua.", en:"Custom applications, built around your needs." },
+    hero_lede:      { sq:"CA2-NET krijon software profesional — nga ideja te produkti final — me çmime të volitshme dhe komunikim të drejtpërdrejtë gjatë gjithë procesit.", en:"CA2-NET builds professional software — from idea to finished product — at affordable prices, with clear communication throughout." },
+    hero_note:      { sq:"Çdo projekt fillon me një bisedë të thjeshtë. Na kontakto dhe flasim për atë që të duhet.", en:"Every project starts with a simple conversation. Reach out and let's talk about what you need." },
+    services_h2:    { sq:"Shërbimet", en:"Services" },
+    services_intro: { sq:"Zhvillojmë zgjidhje software sipas kërkesave specifike të çdo klienti, pa shabllone të gatshme.", en:"We build software tailored to each client's specific needs — no off-the-shelf templates." },
+    svc1_title:     { sq:"Aplikacione desktop", en:"Desktop applications" },
+    svc1_desc:      { sq:"Programe të personalizuara për menaxhim biznesi, magazina, klientë apo procese të brendshme.", en:"Custom programs for business management, inventory, clients, or internal processes." },
+    svc2_title:     { sq:"Faqe interneti", en:"Websites" },
+    svc2_desc:      { sq:"Sajte profesionale për biznese, portofolio apo prezantim shërbimesh — të shpejta dhe të lehta për t'u mirëmbajtur.", en:"Professional websites for businesses, portfolios, or service showcases — fast and easy to maintain." },
+    svc3_title:     { sq:"Automatizime", en:"Automation" },
+    svc3_desc:      { sq:"Skripte dhe mjete që kursejnë kohë duke automatizuar punë të përsëritura.", en:"Scripts and tools that save time by automating repetitive work." },
+    menu_tag:       { sq:"Sipas porosisë", en:"On request" },
+    process_h2:     { sq:"Si punojmë", en:"How we work" },
+    process_intro:  { sq:"Proces i thjeshtë, pa burokraci — nga ideja te aplikacioni gati për përdorim.", en:"A simple process, no bureaucracy — from idea to a ready-to-use application." },
+    step1_title:    { sq:"Na kontakto", en:"Get in touch" },
+    step1_desc:     { sq:"Na shpjegon shkurt çfarë të duhet — nuk ka nevojë për specifikim teknik.", en:"Tell us briefly what you need — no technical spec required." },
+    step2_title:    { sq:"Ofertë dhe afat", en:"Quote and timeline" },
+    step2_desc:     { sq:"Brenda pak ditësh të japim një çmim të qartë dhe kohën e nevojshme për ta përfunduar.", en:"Within a few days we give you a clear price and the time needed to finish." },
+    step3_title:    { sq:"Zhvillimi", en:"Development" },
+    step3_desc:     { sq:"Ndërtojmë aplikacionin dhe të mbajmë të informuar për ecurinë.", en:"We build the application and keep you updated on progress." },
+    step4_title:    { sq:"Dorëzimi", en:"Delivery" },
+    step4_desc:     { sq:"Të dorëzojmë produktin final, gati për përdorim, me mbështetje pas dorëzimit.", en:"We deliver the finished product, ready to use, with support after delivery." },
+    pricing_title:  { sq:"Çmime të volitshme, të përshtatura për çdo buxhet.", en:"Affordable prices, tailored to any budget." },
+    pricing_desc:   { sq:"Çdo projekt është i ndryshëm, prandaj çmimi caktohet pas një bisede të shkurtër për të kuptuar saktësisht çfarë të duhet.", en:"Every project is different, so pricing is set after a short conversation to understand exactly what's needed." },
+    pricing_cta:    { sq:"Kërko një ofertë", en:"Request a quote" },
+    contact_h2:     { sq:"Kontakt", en:"Contact" },
+    contact_intro:  { sq:"Mjafton të na shkruash — pjesën tjetër e menaxhojmë ne.", en:"Just send us a message — we'll take care of the rest." },
+    label_name:     { sq:"Emri", en:"Name" },
+    label_email:    { sq:"Email", en:"Email" },
+    label_message:  { sq:"Çfarë të duhet?", en:"What do you need?" },
+    btn_send:       { sq:"Dërgo kërkesën", en:"Send request" },
+    info_email_label:{ sq:"Email", en:"Email" },
+    info_reply_label:{ sq:"Përgjigje", en:"Response time" },
+    info_reply_value:{ sq:"Brenda 24-48 orëve", en:"Within 24–48 hours" },
+    info_area_label:{ sq:"Zona e shërbimit", en:"Service area" },
+    info_area_value:{ sq:"Online, kudo", en:"Online, anywhere" },
+    footer_tag:     { sq:"Aplikacione të personalizuara", en:"Custom applications" }
+  };
+
+  function setLang(lang){
+    window.__ca2Lang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n');
+      if(translations[key] && translations[key][lang]){
+        el.textContent = translations[key][lang];
+      }
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      setLang(btn.getAttribute('data-lang'));
+    });
+  });
+</script>
+
+</body>
+</html>
