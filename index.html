@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - CA2NET</title>
+    <title>CA2NET - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
                 <a href="rreth-nesh.html" data-i18n="nav_about">Rreth Nesh</a>
             </div>
 
-            <!-- Selektori i Gjuhëve me Flamuj -->
+            <!-- Selektori i Gjuhëve -->
             <select id="lang-select" class="lang-dropdown">
                 <option value="sq">🇦🇱 AL</option>
                 <option value="it">🇮🇹 IT</option>
@@ -42,106 +42,109 @@
     </nav>
 </header>
 
-    <div class="container">
-        <h1 data-i18n="hero_title">Mirë se vini në Platformën Tonë!</h1>
-        <p data-i18n="hero_desc">Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.</p>
+<div class="container">
+    <h1 data-i18n="portfolio_title">Project Portfolio</h1>
 
-        <h2 class="section-title" data-i18n="section_portfolio">Portofoli i Projekteve</h2>
-        
-        <div class="portfolio-grid">
-            
-            <div class="portfolio-card">
-                <div class="card-image-box python-bg">
-                    <code>
-                        def llogarit_fitimin(hyrja, dalja):<br>
-                        &nbsp;&nbsp;return dalja - hyrja<br>
-                        print("Python Active")
-                    </code>
+    <div class="portfolio-grid">
+        <!-- KARTA 1: Python Code -->
+        <div class="portfolio-card">
+            <div class="card-visual code-visual">
+                <pre><code>def llogarit_fitimin(hyrja, dalja):
+    return dalja - hyrja
+print("Python Active")</code></pre>
+            </div>
+            <div class="card-content">
+                <h3 data-i18n="card1_title">Python Code & Logic</h3>
+                <p data-i18n="card1_desc">Automated scripts, financial calculations, and data processing with fast algorithms.</p>
+            </div>
+        </div>
+
+        <!-- KARTA 2: Software Applications -->
+        <div class="portfolio-card">
+            <div class="card-visual app-visual">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="card1_title">Kodi & Logjika në Python</h3>
-                    <p data-i18n="card1_desc">Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.</p>
+                <div class="window-body">
+                    <span>📊 App Trading & Analytics</span>
                 </div>
             </div>
+            <div class="card-content">
+                <h3 data-i18n="card2_title">Software Applications</h3>
+                <p data-i18n="card2_desc">Interactive desktop tools and software for account management and statistics.</p>
+            </div>
+        </div>
 
-            <div class="portfolio-card">
-                <div class="card-image-box app-bg">
-                    <div class="app-mockup">
-                        <div class="mockup-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="mockup-body">
-                            <span>📊 App Trading & Analytics</span>
-                        </div>
+        <!-- KARTA 3: Web Systems (KËTU ISHTE PRISHUR) -->
+        <div class="portfolio-card">
+            <div class="card-visual web-visual">
+                <div class="browser-bar">
+                    <div class="browser-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="url-bar">https://ca2net.com</div>
+                </div>
+                <div class="web-preview">
+                    <div class="web-hero"></div>
+                    <div class="web-blocks">
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="card2_title">Aplikacione Softuerike</h3>
-                    <p data-i18n="card2_desc">Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.</p>
-                </div>
             </div>
-
-            <div class="portfolio-card">
-                <div class="card-image-box web-bg">
-                    <div class="web-mockup">
-                        <div class="web-bar"></div>
-                        <div class="web-layout">
-                            <div class="side-bar"></div>
-                            <div class="main-content"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 data-i18n="card3_title">Faqe Web të Kompletuara</h3>
-                    <p data-i18n="card3_desc">Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask.</p>
-                </div>
+            <div class="card-content">
+                <h3 data-i18n="card3_title">Complete Websites</h3>
+                <p data-i18n="card3_desc">Multifunctional, responsive websites for any device connected to Flask backends.</p>
             </div>
-
         </div>
     </div>
+</div>
 
-    <!-- FOOTER ME COPYRIGHT (I VENDOSUR PARAPRAKISHT MBI SCRIPT) -->
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
-        </div>
-    </footer>
+<!-- FOOTER I SAKTAKSUAR -->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
+    </div>
+</footer>
 
-    <!-- Script për Temën dhe Menunë Mobile -->
-    <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+<script>
+    // Logjika e Temës (Dark/Light)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
 
-        function updateIcon(theme) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
+    function updateIcon(theme) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
 
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
+    // Logjika e Menusë Mobile (Hamburger)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    </script>
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
 
-    <!-- Skedarët për Përkthimin e Gjuhëve -->
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+<!-- Skedarët për Përkthimin -->
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
 
 </body>
 </html>
