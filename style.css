@@ -2,16 +2,15 @@
    1. VARIABLAT E TEMAVE
    ========================================================= */
 :root {
-    /* Tema LIGHT (Gri-blu e zbutur, JO e bardhë verblindëse) */
     --bg-color: #dce4ec;
     --bg-gradient-1: rgba(0, 102, 255, 0.12);
     --bg-gradient-2: rgba(0, 204, 255, 0.1);
     --text-color: #1e293b;
     --text-muted: #475569;
-    --header-bg: rgba(220, 228, 236, 0.85);
+    --header-bg: rgba(220, 228, 236, 0.92);
     --header-border: rgba(0, 102, 255, 0.2);
     
-    --card-bg: rgba(255, 255, 255, 0.65);
+    --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: rgba(255, 255, 255, 0.8);
     --card-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     --card-hover-border: #0066ff;
@@ -20,16 +19,16 @@
     --heading-color: #0f172a;
     --box-inner-bg: rgba(210, 220, 232, 0.7);
     --code-text: #0284c7;
+    --mobile-menu-bg: rgba(220, 228, 236, 0.98);
 }
 
 [data-theme="dark"] {
-    /* Tema DARK (E zezë sotisfikuar me neoni) */
     --bg-color: #080c14;
     --bg-gradient-1: rgba(0, 102, 255, 0.15);
     --bg-gradient-2: rgba(0, 204, 255, 0.08);
     --text-color: #cbd5e1;
     --text-muted: #94a3b8;
-    --header-bg: rgba(8, 12, 20, 0.85);
+    --header-bg: rgba(8, 12, 20, 0.92);
     --header-border: rgba(255, 255, 255, 0.08);
     
     --card-bg: rgba(15, 23, 42, 0.65);
@@ -41,6 +40,7 @@
     --heading-color: #ffffff;
     --box-inner-bg: rgba(8, 12, 20, 0.8);
     --code-text: #38bdf8;
+    --mobile-menu-bg: rgba(8, 12, 20, 0.98);
 }
 
 /* =========================================================
@@ -69,7 +69,7 @@ body {
 }
 
 /* =========================================================
-   3. HEADER, NAVIGIMI & LOGO ME SHKRIM
+   3. HEADER & NAVIGIMI
    ========================================================= */
 header {
     background: var(--header-bg);
@@ -91,7 +91,6 @@ nav {
     height: 80px;
 }
 
-/* LOGO ME SHKRIM ELEGANT */
 .logo-text {
     font-size: 26px;
     font-weight: 800;
@@ -100,23 +99,19 @@ nav {
 }
 
 .logo-gold {
-    color: #f59e0b;
+    color: #f59e0b !important;
     text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
 }
 
 .logo-blue {
-    color: #0066ff;
+    color: #0066ff !important;
     text-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
-}
-
-.logo-text:hover {
-    transform: scale(1.04);
 }
 
 .nav-right-group {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .nav-links {
@@ -156,7 +151,6 @@ nav {
     width: 100%;
 }
 
-/* BUTONI I IKONËS */
 .theme-toggle-btn {
     background: rgba(0, 102, 255, 0.1);
     border: 1px solid var(--header-border);
@@ -169,14 +163,23 @@ nav {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    backdrop-filter: blur(8px);
 }
 
 .theme-toggle-btn:hover {
     background: #0066ff;
     color: #ffffff;
     transform: scale(1.08);
-    box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+}
+
+/* Butoni i menusë Hamburger (fshihet në PC) */
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--heading-color);
+    cursor: pointer;
+    padding: 5px;
 }
 
 /* =========================================================
@@ -210,7 +213,7 @@ p {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 28px;
 }
 
@@ -302,4 +305,65 @@ p {
     font-size: 14px;
     color: var(--text-muted);
     margin-bottom: 0;
+}
+
+/* =========================================================
+   5. MEDIA QUERIES (PËR EKRA NE CELULAR / TABLET)
+   ========================================================= */
+@media (max-width: 768px) {
+    nav {
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    /* Menuja e palosshme në celular */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--mobile-menu-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        border-bottom: 1px solid var(--header-border);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        display: none; /* Fshihet si bazë */
+    }
+
+    .nav-links.show {
+        display: flex; /* Shfaqet kur klikohet hamburgeri */
+    }
+
+    .container {
+        margin: 25px auto;
+        padding: 0 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .section-title {
+        font-size: 19px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Kartelat vendosen 1 nga 1 vertikalisht */
+        gap: 20px;
+    }
 }
