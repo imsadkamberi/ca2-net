@@ -16,17 +16,23 @@
 
             <div class="nav-right-group">
                 <div class="nav-links" id="nav-links">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="cka-mundesojm.html">Çka Mundësojmë</a>
-                    <a href="partneret.html">Partnerët</a>
-                    <a href="rreth-nesh.html">Rreth Nesh</a>
+                    <a href="index.html" class="active" data-i18n="nav_home">Home</a>
+                    <a href="cka-mundesojm.html" data-i18n="nav_services">Çka Mundësojmë</a>
+                    <a href="partneret.html" data-i18n="nav_partners">Partnerët</a>
+                    <a href="rreth-nesh.html" data-i18n="nav_about">Rreth Nesh</a>
                 </div>
+
+                <!-- Selektori i Gjuhëve -->
+                <select id="lang-select" class="lang-dropdown">
+                    <option value="sq">SQ 🇦🇱</option>
+                    <option value="it">IT 🇮🇹</option>
+                    <option value="en">EN 🇬🇧</option>
+                </select>
 
                 <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
                     <span id="theme-icon">🌙</span>
                 </button>
 
-                <!-- Butoni Hamburger për Mobile -->
                 <button id="hamburger" class="hamburger-btn" title="Menu">
                     ☰
                 </button>
@@ -35,10 +41,10 @@
     </header>
 
     <div class="container">
-        <h1>Mirë se vini në Platformën Tonë!</h1>
-        <p>Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.</p>
+        <h1 data-i18n="hero_title">Mirë se vini në Platformën Tonë!</h1>
+        <p data-i18n="hero_desc">Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.</p>
 
-        <h2 class="section-title">Portofoli i Projekteve</h2>
+        <h2 class="section-title" data-i18n="section_portfolio">Portofoli i Projekteve</h2>
         
         <div class="portfolio-grid">
             
@@ -51,8 +57,8 @@
                     </code>
                 </div>
                 <div class="card-content">
-                    <h3>Kodi & Logjika në Python</h3>
-                    <p>Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.</p>
+                    <h3 data-i18n="card1_title">Kodi & Logjika në Python</h3>
+                    <p data-i18n="card1_desc">Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.</p>
                 </div>
             </div>
 
@@ -70,8 +76,8 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Aplikacione Softuerike</h3>
-                    <p>Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.</p>
+                    <h3 data-i18n="card2_title">Aplikacione Softuerike</h3>
+                    <p data-i18n="card2_desc">Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.</p>
                 </div>
             </div>
 
@@ -86,16 +92,16 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Faqe Web të Kompletuara</h3>
-                    <p>Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask.</p>
+                    <h3 data-i18n="card3_title">Faqe Web të Kompletuara</h3>
+                    <p data-i18n="card3_desc">Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask.</p>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <!-- Script për Temën dhe Menunë Mobile -->
     <script>
-        // Logjika e Temës (Dark/Light)
         const toggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
@@ -116,7 +122,6 @@
             themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
         }
 
-        // Logjika e Menusë Mobile (Hamburger)
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
 
@@ -124,6 +129,10 @@
             navLinks.classList.toggle('show');
         });
     </script>
+
+    <!-- Skedarët për Përkthimin e Gjuhëve -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
 
 </body>
 </html>
