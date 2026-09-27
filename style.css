@@ -10,17 +10,25 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Prapavijë e errët moderne që nxjerr në pah efektin e xhamit */
 body {
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: #0b0f19;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+    color: #e2e8f0;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
-/* Header & Navigimi */
+/* Header & Navigimi me Glassmorphism */
 header {
-    background-color: #121212;
-    padding: 15px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: rgba(18, 18, 18, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -33,26 +41,38 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    height: 100px;
 }
 
-.logo {
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
+/* Stilimi i Logos */
+.logo-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
 }
 
-.logo span {
-    color: #007bff;
+.logo-img {
+    height: 100%;
+    width: auto;
+    max-height: 100px;
+    object-fit: contain;
+    filter: brightness(1.1) contrast(1.1);
+    transition: transform 0.3s ease;
 }
 
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Linqet e Navigimit */
 .nav-links {
     display: flex;
     align-items: center;
 }
 
 .nav-links a {
-    color: #cccccc;
+    color: #a0aec0;
     text-decoration: none;
     margin-left: 25px;
     font-size: 16px;
@@ -70,6 +90,7 @@ nav {
     bottom: 0;
     left: 0;
     background-color: #007bff;
+    box-shadow: 0 0 8px #007bff;
     transition: width 0.3s ease;
 }
 
@@ -87,52 +108,7 @@ nav {
     font-weight: 600;
 }
 
-/* Selektori i Gjuhës */
-.lang-switch {
-    display: flex;
-    gap: 6px;
-    margin-left: 30px;
-    padding-left: 20px;
-    border-left: 1px solid #333;
-}
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid #444;
-    color: #999;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 5px 9px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.lang-btn:hover {
-    color: #fff;
-    border-color: #007bff;
-}
-
-.lang-btn.active {
-    background: #007bff;
-    color: #fff;
-    border-color: #007bff;
-}
-
-@media (max-width: 700px) {
-    nav {
-        flex-wrap: wrap;
-        row-gap: 12px;
-    }
-    .lang-switch {
-        margin-left: 0;
-        padding-left: 0;
-        border-left: none;
-    }
-}
-
-/* Përmbajtja */
+/* Përmbajtja Kryesore */
 .container {
     max-width: 1200px;
     margin: 40px auto;
@@ -142,22 +118,42 @@ nav {
 h1 {
     font-size: 32px;
     margin-bottom: 10px;
-    color: #111;
+    color: #ffffff;
 }
 
 p {
     font-size: 16px;
-    color: #555;
+    color: #94a3b8;
     margin-bottom: 30px;
 }
 
 .section-title {
     font-size: 24px;
     margin: 30px 0 20px 0;
-    color: #222;
+    color: #f1f5f9;
 }
 
-/* Rrjeti i Portofolit */
+/* Elementi me Dritë Neoni & Glassmorphism */
+.glow-box {
+    background: rgba(0, 242, 254, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #00f2fe;
+    box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.25), 
+                0 0 20px rgba(0, 242, 254, 0.35);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.glow-box:hover {
+    box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.4), 
+                0 0 30px rgba(0, 242, 254, 0.6);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Rrjeti i Portofolit me Glassmorphism */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -165,17 +161,20 @@ p {
 }
 
 .portfolio-card {
-    background: #ffffff;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .portfolio-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 40px rgba(0, 123, 255, 0.25);
+    border-color: rgba(0, 123, 255, 0.4);
 }
 
 .card-image-box {
@@ -184,20 +183,21 @@ p {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .python-bg {
-    background-color: #0d1117;
+    background-color: rgba(13, 17, 23, 0.8);
     color: #58a6ff;
     font-family: monospace;
 }
 
 .app-bg {
-    background-color: #1e293b;
+    background-color: rgba(30, 41, 59, 0.8);
 }
 
 .web-bg {
-    background-color: #2563eb;
+    background-color: rgba(37, 99, 235, 0.8);
 }
 
 .card-content {
@@ -207,23 +207,23 @@ p {
 .card-content h3 {
     margin-bottom: 10px;
     font-size: 20px;
-    color: #111;
+    color: #ffffff;
 }
 
 .card-content p {
     font-size: 14px;
-    color: #666;
+    color: #94a3b8;
     margin-bottom: 0;
 }
 
 /* Grafikat Brenda Kartelave */
 .app-mockup {
-    background: #0f172a;
+    background: rgba(15, 23, 42, 0.9);
     border-radius: 8px;
     width: 100%;
     padding: 15px;
     color: #fff;
-    border: 1px solid #334155;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mockup-header {
@@ -242,7 +242,7 @@ p {
 .green { background: #10b981; }
 
 .web-mockup {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     width: 100%;
     height: 120px;
     border-radius: 6px;
