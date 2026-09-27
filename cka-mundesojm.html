@@ -9,31 +9,38 @@
 <body>
 
     <header>
-        <nav>
-            <a href="index.html" class="logo-text">
-                <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
-            </a>
+    <nav>
+        <a href="index.html" class="logo-text">
+            <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
+        </a>
 
-            <div class="nav-right-group">
-                <div class="nav-links" id="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="cka-mundesojm.html" class="active">Çka Mundësojmë</a>
-                    <a href="partneret.html">Partnerët</a>
-                    <a href="rreth-nesh.html">Rreth Nesh</a>
-                </div>
-
-                <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
-                    <span id="theme-icon">🌙</span>
-                </button>
-
-                <!-- Butoni Hamburger për Mobile -->
-                <button id="hamburger" class="hamburger-btn" title="Menu">
-                    ☰
-                </button>
+        <div class="nav-right-group">
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="active" data-i18n="nav_home">Home</a>
+                <a href="cka-mundesojm.html" data-i18n="nav_services">Çka Mundësojmë</a>
+                <a href="partneret.html" data-i18n="nav_partners">Partnerët</a>
+                <a href="rreth-nesh.html" data-i18n="nav_about">Rreth Nesh</a>
             </div>
-        </nav>
-    </header>
 
+            <!-- VENDOSE KËTU: Selektori i Gjuhëve -->
+            <select id="lang-select" class="lang-dropdown">
+                <option value="sq">🇦🇱 AL</option>
+                <option value="it">🇮🇹 IT</option>
+                <option value="en">🇬🇧 EN</option>
+            </select>
+
+            <!-- Butoni i Temës -->
+            <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
+                <span id="theme-icon">🌙</span>
+            </button>
+
+            <!-- Butoni Hamburger për Mobile -->
+            <button id="hamburger" class="hamburger-btn" title="Menu">
+                ☰
+            </button>
+        </div>
+    </nav>
+</header>
     <div class="container">
         <h1>Çka Mundësojmë</h1>
         <p>Shërbimet dhe zgjidhjet teknologjike që zhvillojmë me saktësi dhe standarde moderne.</p>
