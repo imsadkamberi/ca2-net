@@ -254,7 +254,7 @@ p {
 }
 
 /* =========================================================
-   5. PAMJET VIZUALE TË KARTAVE (RREGULLIMI I PRISHJES)
+   5. PAMJET VIZUALE TË KARTAVE
    ========================================================= */
 .card-visual {
     width: 100%;
@@ -277,6 +277,8 @@ p {
 .code-visual pre {
     margin: 0;
     white-space: pre-wrap;
+    display: flex;
+    align-items: baseline;
 }
 
 .code-visual code {
@@ -284,6 +286,22 @@ p {
     font-family: 'Consolas', monospace;
     font-size: 11px;
     line-height: 1.4;
+}
+
+/* Kursori që pulson gjatë shkrimit */
+.cursor {
+    display: inline-block;
+    color: #00a2ff;
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* App Visual & Web Visual Headers */
@@ -382,7 +400,7 @@ p {
 }
 
 /* =========================================================
-   6. FOOTER & COPYRIGHT (I QENDROUAR MË MES)
+   6. FOOTER & COPYRIGHT
    ========================================================= */
 footer {
     width: 100%;
