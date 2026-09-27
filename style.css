@@ -393,3 +393,54 @@ p {
     padding: 8px;
     font-weight: 600;
 }
+/* =========================================================
+   SELECT-I I GJUHËVE (LANG DROPDOWN)
+   ========================================================= */
+.lang-dropdown {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    border: 1px solid var(--header-border);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.lang-dropdown:hover,
+.lang-dropdown:focus {
+    border-color: #f39c12;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.lang-dropdown option {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+[data-theme="light"] .lang-dropdown option {
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
+/* =========================================================
+   FOOTER & COPYRIGHT
+   ========================================================= */
+footer {
+    background: var(--header-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--header-border);
+    padding: 20px 0;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.footer-container p {
+    font-size: 14px;
+    color: var(--text-muted, #a0a0a0);
+    margin: 0;
+    font-weight: 500;
+}
