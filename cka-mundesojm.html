@@ -6,85 +6,78 @@
     <title>Çka Mundësojmë - CA2NET</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-i18n-title="title.what">
+<body>
 
     <header>
         <nav>
-            <div class="logo">CA2<span>NET</span></div>
-            <div class="nav-links">
-                <a href="index.html" data-i18n="nav.home">Home</a>
-                <a href="cka-mundesojm.html" class="active" data-i18n="nav.what">Çka Mundësojmë</a>
-                <a href="partneret.html" data-i18n="nav.partners">Partnerët</a>
-                <a href="rreth-nesh.html" data-i18n="nav.about">Rreth Nesh</a>
-            </div>
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="sq">SQ</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="it">IT</button>
-                <button class="lang-btn" data-lang="de">DE</button>
+            <a href="index.html" class="logo-text">
+                <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
+            </a>
+
+            <div class="nav-right-group">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="cka-mundesojm.html" class="active">Çka Mundësojmë</a>
+                    <a href="partneret.html">Partnerët</a>
+                    <a href="rreth-nesh.html">Rreth Nesh</a>
+                </div>
+
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
+                    <span id="theme-icon">🌙</span>
+                </button>
             </div>
         </nav>
     </header>
 
     <div class="container">
-        <h1 data-i18n="what.h1">Çka Mundësojmë?</h1>
-        <p data-i18n="what.p">Shërbimet tona kryesore të cilat ndihmojnë në digjitalizimin dhe automatizimin e punëve tuaja.</p>
+        <h1>Çka Mundësojmë</h1>
+        <p>Shërbimet dhe zgjidhjet teknologjike që zhvillojmë me saktësi dhe standarde moderne.</p>
 
         <div class="portfolio-grid">
-            
             <div class="portfolio-card">
-                <div class="card-image-box python-bg">
-                    <code>
-                        import pandas as pd<br>
-                        # Auto Trading Bot<br>
-                        bot.execute_trade()
-                    </code>
-                </div>
                 <div class="card-content">
-                    <h3 data-i18n="what.card1.title">Automatizim me Python</h3>
-                    <p data-i18n="what.card1.desc">Skripte të avancuara për përpunim të dhënash, analitika financiare dhe integrime të ndryshme.</p>
+                    <h3>Automatizim & Skripte Python</h3>
+                    <p>Programim me logjikë financiare, llogaritës risku, bot-e dhe përpunim automatik të të dhënave.</p>
                 </div>
             </div>
 
             <div class="portfolio-card">
-                <div class="card-image-box web-bg">
-                    <div class="web-mockup">
-                        <div class="web-bar"></div>
-                        <div class="web-layout">
-                            <div class="side-bar"></div>
-                            <div class="main-content"></div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-content">
-                    <h3 data-i18n="what.card2.title">Uebsajte Moderne</h3>
-                    <p data-i18n="what.card2.desc">Ndërtim i faqeve statike dhe dinamike me dizajne unike dhe përshtatshmëri në çdo pajisje.</p>
+                    <h3>Aplikacione Desktop & Software</h3>
+                    <p>Zgjidhje softuerike interaktive me ndërfaqe grafike (GUI) me menaxhim databazash lokale.</p>
                 </div>
             </div>
 
             <div class="portfolio-card">
-                <div class="card-image-box app-bg">
-                    <div class="app-mockup">
-                        <div class="mockup-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="mockup-body">
-                            <span data-i18n="what.card3.mockup">⚙️ Software &amp; Tools</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-content">
-                    <h3 data-i18n="what.card3.title">Zgjidhje Softuerike</h3>
-                    <p data-i18n="what.card3.desc">Aplikacione të personalizuara desktop dhe mjete ndihmëse për biznese e individë.</p>
+                    <h3>Uebsajte & Platforma Web</h3>
+                    <p>Zhvillim faqesh moderne, responsive dhe dinamike të lidhura me servera backend.</p>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+
 </body>
 </html>
