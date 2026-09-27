@@ -49,12 +49,10 @@
     <h1 data-i18n="portfolio_title">Portofoli i Projekteve</h1>
 
     <div class="portfolio-grid">
-        <!-- KARTA 1: Python Code -->
+        <!-- KARTA 1: Python Code (E përditësuar me efektin Typewriter) -->
         <div class="portfolio-card">
             <div class="card-visual code-visual">
-                <pre><code>def llogarit_fitimin(hyrja, dalja):
-    return dalja - hyrja
-print("Python Active")</code></pre>
+                <pre><code id="typewriter-code"></code><span class="cursor">|</span></pre>
             </div>
             <div class="card-content">
                 <h3 data-i18n="card1_title">Kodi & Logjika Python</h3>
@@ -145,44 +143,44 @@ print("Python Active")</code></pre>
     });
 </script>
 
-<!-- Skedarët ekzistues të përkthimit -->
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+<!-- Skedarët e përkthimit -->
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
 
-    <!-- KODI I RI PËR EFEKTIN TYPEWRITER -->
-    <script>
-        const codeText = `def llogarit_fitimin(hyrja, dalja):\n    return dalja - hyrja\n\nprint("Python Active")`;
-        const codeElement = document.getElementById('typewriter-code');
-        
-        let index = 0;
-        let isDeleting = false;
+<!-- EFEKTI TYPEWRITER PËR PYTHON CODE -->
+<script>
+    const codeText = `def llogarit_fitimin(hyrja, dalja):\n    return dalja - hyrja\n\nprint("Python Active")`;
+    const codeElement = document.getElementById('typewriter-code');
+    
+    let index = 0;
+    let isDeleting = false;
 
-        function typeEffect() {
-            if (!codeElement) return;
+    function typeEffect() {
+        if (!codeElement) return;
 
-            if (isDeleting) {
-                codeElement.textContent = codeText.substring(0, index - 1);
-                index--;
-            } else {
-                codeElement.textContent = codeText.substring(0, index + 1);
-                index++;
-            }
-
-            let speed = isDeleting ? 30 : 60;
-
-            if (!isDeleting && index === codeText.length) {
-                speed = 3000;
-                isDeleting = true;
-            } else if (isDeleting && index === 0) {
-                isDeleting = false;
-                speed = 500;
-            }
-
-            setTimeout(typeEffect, speed);
+        if (isDeleting) {
+            codeElement.textContent = codeText.substring(0, index - 1);
+            index--;
+        } else {
+            codeElement.textContent = codeText.substring(0, index + 1);
+            index++;
         }
 
-        document.addEventListener("DOMContentLoaded", typeEffect);
-    </script>
+        let speed = isDeleting ? 30 : 60;
+
+        if (!isDeleting && index === codeText.length) {
+            speed = 3000;
+            isDeleting = true;
+        } else if (isDeleting && index === 0) {
+            isDeleting = false;
+            speed = 500;
+        }
+
+        setTimeout(typeEffect, speed);
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
 
 </body>
 </html>
