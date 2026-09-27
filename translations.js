@@ -1,7 +1,7 @@
 const translations = {
     sq: {
         // Navigimi (Të përbashkëta)
-        nav_home: "Kreu",
+        nav_home: "Home",
         nav_services: "Çka Mundësojmë",
         nav_partners: "Partnerët",
         nav_about: "Rreth Nesh",
