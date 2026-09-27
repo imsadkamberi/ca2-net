@@ -1,23 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const langSelect = document.getElementById("lang-select");
 
-    // Merr gjuhën e ruajtur ose vendos 'sq' si default
-    const savedLang = localStorage.getItem("selectedLang") || "sq";
-    langSelect.value = savedLang;
-    changeLanguage(savedLang);
+    // Lexo gjuhën nga localStorage ose vendos 'sq' si kryesore
+    let currentLang = localStorage.getItem("selectedLang") || "sq";
+    
+    if (langSelect) {
+        langSelect.value = currentLang;
+        
+        // Përkthe faqen sapo të ngarkohet
+        applyLanguage(currentLang);
 
-    langSelect.addEventListener("change", (e) => {
-        const lang = e.target.value;
-        localStorage.setItem("selectedLang", lang);
-        changeLanguage(lang);
-    });
+        // Ndrysho gjuhën kur përdoruesi zgjedh një opsion tjetër
+        langSelect.addEventListener("change", (e) => {
+            const selectedLang = e.target.value;
+            localStorage.setItem("selectedLang", selectedLang);
+            applyLanguage(selectedLang);
+        });
+    } else {
+        applyLanguage(currentLang);
+    }
 });
 
-function changeLanguage(lang) {
+function applyLanguage(lang) {
+    if (!translations || !translations[lang]) return;
+
     const elements = document.querySelectorAll("[data-i18n]");
     elements.forEach((el) => {
         const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key]) {
+        if (translations[lang][key]) {
             el.textContent = translations[lang][key];
         }
     });
