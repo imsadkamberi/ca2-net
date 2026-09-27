@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <header>
+<header>
     <nav>
         <a href="index.html" class="logo-text">
             <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
@@ -16,13 +16,13 @@
 
         <div class="nav-right-group">
             <div class="nav-links" id="nav-links">
-                <a href="index.html" class="active" data-i18n="nav_home">Home</a>
+                <a href="index.html" data-i18n="nav_home">Home</a>
                 <a href="cka-mundesojm.html" data-i18n="nav_services">Çka Mundësojmë</a>
-                <a href="partneret.html" data-i18n="nav_partners">Partnerët</a>
+                <a href="partneret.html" class="active" data-i18n="nav_partners">Partnerët</a>
                 <a href="rreth-nesh.html" data-i18n="nav_about">Rreth Nesh</a>
             </div>
 
-            <!-- VENDOSE KËTU: Selektori i Gjuhëve -->
+            <!-- Selektori i Gjuhëve -->
             <select id="lang-select" class="lang-dropdown">
                 <option value="sq">🇦🇱 AL</option>
                 <option value="it">🇮🇹 IT</option>
@@ -43,32 +43,39 @@
 </header>
 
     <div class="container">
-        <h1>Partnerët Tanë</h1>
-        <p>Bashkëpunëtorët dhe teknologjitë kryesore me të cilat ndërtojmë ekosistemin tonë softuerik.</p>
+        <h1 data-i18n="nav_partners">Partnerët Tanë</h1>
+        <p data-i18n="partners_desc">Bashkëpunëtorët dhe teknologjitë kryesore me të cilat ndërtojmë ekosistemin tonë softuerik.</p>
 
         <div class="portfolio-grid">
             <div class="portfolio-card">
                 <div class="card-content">
-                    <h3>Ekosistemi Python</h3>
-                    <p>Skeleti bazë për zhvillimin e algoritmeve financiare, apikacioneve desktop dhe strukturave automatike.</p>
+                    <h3 data-i18n="partner1_title">Ekosistemi Python</h3>
+                    <p data-i18n="partner1_desc">Skeleti bazë për zhvillimin e algoritmeve financiare, apikacioneve desktop dhe strukturave automatike.</p>
                 </div>
             </div>
 
             <div class="portfolio-card">
                 <div class="card-content">
-                    <h3>Veglat e Inteligjencës Artificiale</h3>
-                    <p>Integrim i modelimeve dhe ndihmësve inteligjentë për optimizim kodi dhe zgjidhje të shpejta.</p>
+                    <h3 data-i18n="partner2_title">Veglat e Inteligjencës Artificiale</h3>
+                    <p data-i18n="partner2_desc">Integrim i modelimeve dhe ndihmësve inteligjentë për optimizim kodi dhe zgjidhje të shpejta.</p>
                 </div>
             </div>
 
             <div class="portfolio-card">
                 <div class="card-content">
-                    <h3>Platformat e Trading & Analytics</h3>
-                    <p>Aplikime praktike për përpunimin e të dhënave financiare dhe mjeteve tregtare.</p>
+                    <h3 data-i18n="partner3_title">Platformat e Trading & Analytics</h3>
+                    <p data-i18n="partner3_desc">Aplikime praktike për përpunimin e të dhënave financiare dhe mjeteve tregtare.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- FOOTER ME COPYRIGHT -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
+        </div>
+    </footer>
 
     <script>
         // Logjika e Temës (Dark/Light)
@@ -100,6 +107,10 @@
             navLinks.classList.toggle('show');
         });
     </script>
+
+    <!-- Skedarët për Përkthimin e Gjuhëve -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
 
 </body>
 </html>
