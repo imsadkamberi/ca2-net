@@ -66,6 +66,8 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* =========================================================
@@ -111,7 +113,7 @@ nav {
 .nav-right-group {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
 
 .nav-links {
@@ -151,223 +153,7 @@ nav {
     width: 100%;
 }
 
-.theme-toggle-btn {
-    background: rgba(0, 102, 255, 0.1);
-    border: 1px solid var(--header-border);
-    color: var(--heading-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.theme-toggle-btn:hover {
-    background: #0066ff;
-    color: #ffffff;
-    transform: scale(1.08);
-}
-
-/* Butoni i menusë Hamburger (fshihet në PC) */
-.hamburger-btn {
-    display: none;
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    color: var(--heading-color);
-    cursor: pointer;
-    padding: 5px;
-}
-
-/* =========================================================
-   4. PËRMBAJTJA & KARTELAT
-   ========================================================= */
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 24px;
-}
-
-h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--heading-color);
-}
-
-p {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-bottom: 35px;
-}
-
-.section-title {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 35px 0 22px 0;
-    color: var(--heading-color);
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 28px;
-}
-
-.portfolio-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--card-border);
-}
-
-.portfolio-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--card-hover-border);
-    box-shadow: 0 12px 30px var(--card-hover-glow);
-}
-
-.card-image-box {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: var(--box-inner-bg);
-    border-bottom: 1px solid var(--card-border);
-}
-
-.card-image-box code {
-    color: var(--code-text);
-    font-family: 'Consolas', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.app-mockup, .web-mockup {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--card-border);
-    background: rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.mockup-header {
-    height: 28px;
-    background: rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    gap: 6px;
-    border-bottom: 1px solid var(--card-border);
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-.dot.red { background-color: #ef4444; }
-.dot.yellow { background-color: #f59e0b; }
-.dot.green { background-color: #10b981; }
-
-.mockup-body {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.card-content {
-    padding: 22px;
-}
-
-.card-content h3 {
-    margin-bottom: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--heading-color);
-}
-
-.card-content p {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 0;
-}
-
-/* =========================================================
-   5. MEDIA QUERIES (PËR EKRA NE CELULAR / TABLET)
-   ========================================================= */
-@media (max-width: 768px) {
-    nav {
-        height: 70px;
-        padding: 0 16px;
-    }
-
-    .logo-text {
-        font-size: 22px;
-    }
-
-    .hamburger-btn {
-        display: block;
-    }
-
-    /* Menuja e palosshme në celular */
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: var(--mobile-menu-bg);
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        gap: 20px;
-        border-bottom: 1px solid var(--header-border);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        display: none; /* Fshihet si bazë */
-    }
-
-    .nav-links.show {
-        display: flex; /* Shfaqet kur klikohet hamburgeri */
-    }
-
-    .container {
-        margin: 25px auto;
-        padding: 0 16px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    p {
-        font-size: 14px;
-        margin-bottom: 25px;
-    }
-
-    .section-title {
-        font-size: 19px;
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* Kartelat vendosen 1 nga 1 vertikalisht */
-        gap: 20px;
-    }
-}
-/* STILIZIMI I SELEKTORIT TË GJUHËVE ME FLAMUJ */
+/* SELEKTORI I GJUHËVE */
 .lang-dropdown {
     background: var(--card-bg);
     border: 1px solid var(--header-border);
@@ -393,57 +179,281 @@ p {
     padding: 8px;
     font-weight: 600;
 }
-/* =========================================================
-   STILIZIMI I KARTAVE TË VOGLA DHE TË QENDROUARA NË MES
-   ========================================================= */
 
-/* Qendron përmbajtjen kryesore në mes të ekranit */
-.container {
-    max-width: 900px; /* Ndihmon në ngushtimin dhe qendrimin e përmbajtjes */
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center; /* Qendron titujt dhe tekstet */
+.theme-toggle-btn {
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid var(--header-border);
+    color: var(--heading-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
 }
 
-/* Rrjeti i kartave (Grid) - Kartat më të vogla dhe të qendruara */
+.theme-toggle-btn:hover {
+    background: #0066ff;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--heading-color);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* =========================================================
+   4. STRUKTURA DHE KARTAT E TË CILAVE U NDRYSHUA MADHËSIA
+   ========================================================= */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    flex: 1;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
 .portfolio-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* E fut gjithë grupin e kartave në mes */
-    gap: 20px; /* Hapësira ndërmjet kartave */
-    margin-top: 30px;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
 }
 
-/* Stilizimi i secilës kartë */
 .portfolio-card {
-    width: 260px; /* Madhësi fikse më e vogël për secilën kartë */
-    background: var(--card-bg, rgba(255, 255, 255, 0.05));
-    border: 1px solid var(--header-border, rgba(255, 255, 255, 0.1));
-    border-radius: 12px;
-    padding: 18px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-/* Efekti Hover kur kalon miun sipër kartës */
 .portfolio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 12px 30px var(--card-hover-glow);
 }
 
-/* Përmbajtja brenda kartës */
-.portfolio-card h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: var(--text-color);
+/* =========================================================
+   5. PAMJET VIZUALE TË KARTAVE (CODE, APP, WEB)
+   ========================================================= */
+.card-visual {
+    width: 100%;
+    height: 130px;
+    background: var(--box-inner-bg);
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.portfolio-card p {
-    font-size: 13px;
-    line-height: 1.4;
-    color: var(--text-muted, #aaa);
+/* Python Code Visual */
+.code-visual {
+    padding: 12px;
+    text-align: left;
+}
+
+.code-visual pre {
     margin: 0;
+    white-space: pre-wrap;
+}
+
+.code-visual code {
+    color: var(--code-text);
+    font-family: 'Consolas', monospace;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* App Visual */
+.app-visual .window-header,
+.web-visual .browser-bar {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.dot.red { background-color: #ef4444; }
+.dot.yellow { background-color: #f59e0b; }
+.dot.green { background-color: #10b981; }
+
+.app-visual .window-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+/* Web Visual */
+.web-visual .url-bar {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    color: var(--text-muted);
+    width: 100%;
+    text-align: left;
+    margin-left: 6px;
+}
+
+.web-preview {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+}
+
+.web-hero {
+    height: 30px;
+    background: linear-gradient(90deg, #0066ff, #00c8ff);
+    border-radius: 4px;
+}
+
+.web-blocks {
+    display: flex;
+    gap: 6px;
+}
+
+.web-blocks span {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* Card Text Content */
+.card-content {
+    padding: 5px 0;
+}
+
+.card-content h3 {
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.card-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   6. FOOTER & COPYRIGHT (I RREGULLUAR)
+   ========================================================= */
+footer {
+    width: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--header-border);
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-container p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* =========================================================
+   7. MEDIA QUERIES (PËR EKRA NE CELULAR / TABLET)
+   ========================================================= */
+@media (max-width: 768px) {
+    nav {
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--mobile-menu-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        border-bottom: 1px solid var(--header-border);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+
+    .portfolio-card {
+        width: 100%;
+        max-width: 320px;
+    }
 }
