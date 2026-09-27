@@ -45,111 +45,143 @@
     </nav>
 </header>
 
-    <div class="container">
-        <h1 data-i18n="about_title">Rreth Nesh</h1>
-        <p data-i18n="about_desc">Misioni ynë është krijimi i mjeteve softuerike efikase, praktike dhe lehtësisht të përdorshme.</p>
+<div class="container">
+    <h1 data-i18n="about_title">Rreth Nesh</h1>
+    <p data-i18n="about_desc">Misioni ynë është krijimi i mjeteve softuerike efikase, praktike dhe lehtësisht të përdorshme.</p>
 
-        <div class="portfolio-grid">
-            <!-- KARTA 1 -->
-            <div class="portfolio-card">
-                <div class="card-visual app-visual">
-                    <div class="window-header">
+    <div class="portfolio-grid">
+        <!-- KARTA 1 -->
+        <div class="portfolio-card">
+            <div class="card-visual app-visual">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="window-body">
+                    <span>🎯 Vision & Goals</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3 data-i18n="about1_title">Vizioni</h3>
+                <p data-i18n="about1_desc">Të ndërtojmë projekte moderne që ndihmojnë automatizimin e punëve ditore dhe rrisin produktivitetin.</p>
+            </div>
+        </div>
+
+        <!-- KARTA 2: Teknologjia (Me Efektin Typewriter) -->
+        <div class="portfolio-card">
+            <div class="card-visual code-visual">
+                <pre><code id="typewriter-about-code"></code><span class="cursor">|</span></pre>
+            </div>
+            <div class="card-content">
+                <h3 data-i18n="about2_title">Teknologjia</h3>
+                <p data-i18n="about2_desc">Përdorim gjuhët dhe veglat më të përditësuara si Python, HTML5, CSS3, JavaScript dhe inteligjencë artificiale.</p>
+            </div>
+        </div>
+
+        <!-- KARTA 3 -->
+        <div class="portfolio-card">
+            <div class="card-visual web-visual">
+                <div class="browser-bar">
+                    <div class="browser-dots">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <div class="window-body">
-                        <span>🎯 Vision & Goals</span>
-                    </div>
+                    <div class="url-bar">https://ca2net.com/about</div>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="about1_title">Vizioni</h3>
-                    <p data-i18n="about1_desc">Të ndërtojmë projekte moderne që ndihmojnë automatizimin e punëve ditore dhe rrisin produktivitetin.</p>
+                <div class="web-preview">
+                    <div class="web-hero"></div>
+                    <div class="web-blocks">
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
-
-            <!-- KARTA 2 -->
-            <div class="portfolio-card">
-                <div class="card-visual code-visual">
-                    <pre><code>tech_stack = [
-    "Python", "HTML5",
-    "CSS3", "JavaScript"
-]</code></pre>
-                </div>
-                <div class="card-content">
-                    <h3 data-i18n="about2_title">Teknologjia</h3>
-                    <p data-i18n="about2_desc">Përdorim gjuhët dhe veglat më të përditësuara si Python, HTML5, CSS3, JavaScript dhe inteligjencë artificiale.</p>
-                </div>
-            </div>
-
-            <!-- KARTA 3 -->
-            <div class="portfolio-card">
-                <div class="card-visual web-visual">
-                    <div class="browser-bar">
-                        <div class="browser-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="url-bar">https://ca2net.com/about</div>
-                    </div>
-                    <div class="web-preview">
-                        <div class="web-hero"></div>
-                        <div class="web-blocks">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 data-i18n="about3_title">Përkushtimi</h3>
-                    <p data-i18n="about3_desc">Zgjidhje të personalizuara me fokus të veçantë te cilësia e kodit, siguria dhe dizajni minimalist.</p>
-                </div>
+            <div class="card-content">
+                <h3 data-i18n="about3_title">Përkushtimi</h3>
+                <p data-i18n="about3_desc">Zgjidhje të personalizuara me fokus të veçantë te cilësia e kodit, siguria dhe dizajni minimalist.</p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- FOOTER ME COPYRIGHT -->
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
-        </div>
-    </footer>
+<!-- FOOTER ME COPYRIGHT -->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
+    </div>
+</footer>
 
-    <script>
-        // Logjika e Temës (Dark/Light)
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+<script>
+    // Logjika e Temës (Dark/Light)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
 
-        function updateIcon(theme) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    function updateIcon(theme) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Logjika e Menusë Mobile (Hamburger)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
+<!-- Skedarët për Përkthimin e Gjuhëve -->
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
+
+<!-- EFEKTI TYPEWRITER PËR RRETH NESH -->
+<script>
+    const codeTextAbout = `tech_stack = [\n    "Python", "HTML5",\n    "CSS3", "JavaScript"\n]`;
+    const codeElementAbout = document.getElementById('typewriter-about-code');
+    
+    let indexAbout = 0;
+    let isDeletingAbout = false;
+
+    function typeEffectAbout() {
+        if (!codeElementAbout) return;
+
+        if (isDeletingAbout) {
+            codeElementAbout.textContent = codeTextAbout.substring(0, indexAbout - 1);
+            indexAbout--;
+        } else {
+            codeElementAbout.textContent = codeTextAbout.substring(0, indexAbout + 1);
+            indexAbout++;
         }
 
-        // Logjika e Menusë Mobile (Hamburger)
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
+        let speed = isDeletingAbout ? 30 : 60;
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    </script>
+        if (!isDeletingAbout && indexAbout === codeTextAbout.length) {
+            speed = 3000;
+            isDeletingAbout = true;
+        } else if (isDeletingAbout && indexAbout === 0) {
+            isDeletingAbout = false;
+            speed = 500;
+        }
 
-    <!-- Skedarët për Përkthimin e Gjuhëve -->
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+        setTimeout(typeEffectAbout, speed);
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffectAbout);
+</script>
 
 </body>
 </html>
