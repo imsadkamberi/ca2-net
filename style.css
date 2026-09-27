@@ -394,53 +394,56 @@ p {
     font-weight: 600;
 }
 /* =========================================================
-   SELECT-I I GJUHËVE (LANG DROPDOWN)
+   STILIZIMI I KARTAVE TË VOGLA DHE TË QENDROUARA NË MES
    ========================================================= */
-.lang-dropdown {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-color);
-    border: 1px solid var(--header-border);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
+
+/* Qendron përmbajtjen kryesore në mes të ekranit */
+.container {
+    max-width: 900px; /* Ndihmon në ngushtimin dhe qendrimin e përmbajtjes */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Qendron titujt dhe tekstet */
 }
 
-.lang-dropdown:hover,
-.lang-dropdown:focus {
-    border-color: #f39c12;
-    background: rgba(255, 255, 255, 0.15);
+/* Rrjeti i kartave (Grid) - Kartat më të vogla dhe të qendruara */
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* E fut gjithë grupin e kartave në mes */
+    gap: 20px; /* Hapësira ndërmjet kartave */
+    margin-top: 30px;
 }
 
-.lang-dropdown option {
-    background: #1a1a1a;
-    color: #ffffff;
-}
-
-[data-theme="light"] .lang-dropdown option {
-    background: #ffffff;
-    color: #1a1a1a;
-}
-
-/* =========================================================
-   FOOTER & COPYRIGHT
-   ========================================================= */
-footer {
-    background: var(--header-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid var(--header-border);
-    padding: 20px 0;
-    margin-top: 60px;
+/* Stilizimi i secilës kartë */
+.portfolio-card {
+    width: 260px; /* Madhësi fikse më e vogël për secilën kartë */
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--header-border, rgba(255, 255, 255, 0.1));
+    border-radius: 12px;
+    padding: 18px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.footer-container p {
-    font-size: 14px;
-    color: var(--text-muted, #a0a0a0);
+/* Efekti Hover kur kalon miun sipër kartës */
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Përmbajtja brenda kartës */
+.portfolio-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.portfolio-card p {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-muted, #aaa);
     margin: 0;
-    font-weight: 500;
 }
