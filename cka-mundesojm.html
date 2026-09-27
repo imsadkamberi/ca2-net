@@ -45,111 +45,143 @@
     </nav>
 </header>
 
-    <div class="container">
-        <h1 data-i18n="services_title">Çka Mundësojmë</h1>
-        <p data-i18n="services_desc">Shërbimet dhe zgjidhjet teknologjike që zhvillojmë me saktësi dhe standarde moderne.</p>
+<div class="container">
+    <h1 data-i18n="services_title">Çka Mundësojmë</h1>
+    <p data-i18n="services_desc">Shërbimet dhe zgjidhjet teknologjike që zhvillojmë me saktësi dhe standarde moderne.</p>
 
-        <div class="portfolio-grid">
-            <!-- KARTA 1 -->
-            <div class="portfolio-card">
-                <div class="card-visual code-visual">
-                    <pre><code>def llogarit_fitimin(hyrja, dalja):
-    return dalja - hyrja
+    <div class="portfolio-grid">
+        <!-- KARTA 1: Automatizim & Skripte Python (E përditësuar me efektin Typewriter) -->
+        <div class="portfolio-card">
+            <div class="card-visual code-visual">
+                <pre><code id="typewriter-code"></code><span class="cursor">|</span></pre>
+            </div>
+            <div class="card-content">
+                <h3 data-i18n="service1_title">Automatizim & Skripte Python</h3>
+                <p data-i18n="service1_desc">Programim me logjikë financiare, llogaritës risku, bot-e dhe përpunim automatik të të dhënave.</p>
+            </div>
+        </div>
 
-print("Python Active")</code></pre>
+        <!-- KARTA 2 -->
+        <div class="portfolio-card">
+            <div class="card-visual app-visual">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="service1_title">Automatizim & Skripte Python</h3>
-                    <p data-i18n="service1_desc">Programim me logjikë financiare, llogaritës risku, bot-e dhe përpunim automatik të të dhënave.</p>
+                <div class="window-body">
+                    <span>📊 App Trading & Analytics</span>
                 </div>
             </div>
+            <div class="card-content">
+                <h3 data-i18n="service2_title">Aplikacione Desktop & Software</h3>
+                <p data-i18n="service2_desc">Zgjidhje softuerike interaktive me ndërfaqe grafike (GUI) me menaxhim databazash lokale.</p>
+            </div>
+        </div>
 
-            <!-- KARTA 2 -->
-            <div class="portfolio-card">
-                <div class="card-visual app-visual">
-                    <div class="window-header">
+        <!-- KARTA 3 -->
+        <div class="portfolio-card">
+            <div class="card-visual web-visual">
+                <div class="browser-bar">
+                    <div class="browser-dots">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <div class="window-body">
-                        <span>📊 App Trading & Analytics</span>
-                    </div>
+                    <div class="url-bar">https://ca2net.com</div>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="service2_title">Aplikacione Desktop & Software</h3>
-                    <p data-i18n="service2_desc">Zgjidhje softuerike interaktive me ndërfaqe grafike (GUI) me menaxhim databazash lokale.</p>
+                <div class="web-preview">
+                    <div class="web-hero"></div>
+                    <div class="web-blocks">
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
-
-            <!-- KARTA 3 -->
-            <div class="portfolio-card">
-                <div class="card-visual web-visual">
-                    <div class="browser-bar">
-                        <div class="browser-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="url-bar">https://ca2net.com</div>
-                    </div>
-                    <div class="web-preview">
-                        <div class="web-hero"></div>
-                        <div class="web-blocks">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 data-i18n="service3_title">Uebsajte & Platforma Web</h3>
-                    <p data-i18n="service3_desc">Zhvillim faqesh moderne, responsive dhe dinamike të lidhura me servera backend.</p>
-                </div>
+            <div class="card-content">
+                <h3 data-i18n="service3_title">Uebsajte & Platforma Web</h3>
+                <p data-i18n="service3_desc">Zhvillim faqesh moderne, responsive dhe dinamike të lidhura me servera backend.</p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- FOOTER ME COPYRIGHT -->
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
-        </div>
-    </footer>
+<!-- FOOTER ME COPYRIGHT -->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
+    </div>
+</footer>
 
-    <script>
-        // Logjika e Temës (Dark/Light)
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+<script>
+    // Logjika e Temës (Dark/Light)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
 
-        function updateIcon(theme) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    function updateIcon(theme) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Logjika e Menusë Mobile (Hamburger)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
+<!-- Skedarët për Përkthimin e Gjuhëve -->
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
+
+<!-- EFEKTI TYPEWRITER PËR PYTHON CODE -->
+<script>
+    const codeText = `def llogarit_fitimin(hyrja, dalja):\n    return dalja - hyrja\n\nprint("Python Active")`;
+    const codeElement = document.getElementById('typewriter-code');
+    
+    let index = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        if (!codeElement) return;
+
+        if (isDeleting) {
+            codeElement.textContent = codeText.substring(0, index - 1);
+            index--;
+        } else {
+            codeElement.textContent = codeText.substring(0, index + 1);
+            index++;
         }
 
-        // Logjika e Menusë Mobile (Hamburger)
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
+        let speed = isDeleting ? 30 : 60;
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    </script>
+        if (!isDeleting && index === codeText.length) {
+            speed = 3000;
+            isDeleting = true;
+        } else if (isDeleting && index === 0) {
+            isDeleting = false;
+            speed = 500;
+        }
 
-    <!-- Skedarët për Përkthimin e Gjuhëve -->
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+        setTimeout(typeEffect, speed);
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
 
 </body>
 </html>
