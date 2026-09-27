@@ -4,56 +4,41 @@ const translations = {
         nav_services: "Çka Mundësojmë",
         nav_partners: "Partnerët",
         nav_about: "Rreth Nesh",
-        
-        hero_title: "Mirë se vini në Platformën Tonë!",
-        hero_desc: "Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.",
-        section_portfolio: "Portofoli i Projekteve",
-        
-        card1_title: "Kodi & Logjika në Python",
-        card1_desc: "Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.",
-        
-        card2_title: "Aplikacione Softuerike",
-        card2_desc: "Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.",
-        
-        card3_title: "Faqe Web të Kompletuara",
-        card3_desc: "Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask."
+        services_desc: "Shërbimet dhe zgjidhjet teknologjike që zhvillojmë me saktësi dhe standarde moderne.",
+        service1_title: "Automatizim & Skripte Python",
+        service1_desc: "Programim me logjikë financiare, llogaritës risku, bot-e dhe përpunim automatik të të dhënave.",
+        service2_title: "Aplikacione Desktop & Software",
+        service2_desc: "Zgjidhje softuerike interaktive me ndërfaqe grafike (GUI) me menaxhim databazash lokale.",
+        service3_title: "Uebsajte & Platforma Web",
+        service3_desc: "Zhvillim faqesh moderne, responsive dhe dinamike të lidhura me servera backend.",
+        footer_rights: "Të gjitha të drejtat të rezervuara."
     },
     it: {
         nav_home: "Home",
         nav_services: "Cosa Offriamo",
         nav_partners: "Partner",
         nav_about: "Chi Siamo",
-        
-        hero_title: "Benvenuti sulla Nostra Piattaforma!",
-        hero_desc: "Esplora i nostri progetti principali sviluppati con Python, intelligenza artificiale e tecnologie web moderne.",
-        section_portfolio: "Portfolio Progetti",
-        
-        card1_title: "Codice & Logica Python",
-        card1_desc: "Script automatizzati, calcoli finanziari ed elaborazione dati con algoritmi veloci.",
-        
-        card2_title: "Applicazioni Software",
-        card2_desc: "Strumenti desktop interattivi e gestione account e statistiche.",
-        
-        card3_title: "Siti Web Completi",
-        card3_desc: "Siti web multifunzionali, reattivi per qualsiasi dispositivo e collegati a server Flask."
+        services_desc: "Servizi e soluzioni tecnologiche sviluppate con precisione e standard moderni.",
+        service1_title: "Automazione & Script Python",
+        service1_desc: "Programmazione con logica finanziaria, calcolatori di rischio, bot e gestione dati automatica.",
+        service2_title: "Applicazioni Desktop & Software",
+        service2_desc: "Soluzioni software interattive con interfaccia grafica (GUI) e gestione database locali.",
+        service3_title: "Siti Web & Piattaforme Web",
+        service3_desc: "Sviluppo di siti moderni, reattivi e dinamici collegati a server backend.",
+        footer_rights: "Tutti i diritti riservati."
     },
     en: {
         nav_home: "Home",
         nav_services: "What We Offer",
         nav_partners: "Partners",
         nav_about: "About Us",
-        
-        hero_title: "Welcome to Our Platform!",
-        hero_desc: "Explore our core projects built with Python, artificial intelligence, and modern web technologies.",
-        section_portfolio: "Project Portfolio",
-        
-        card1_title: "Python Code & Logic",
-        card1_desc: "Automated scripts, financial calculations, and data processing with fast algorithms.",
-        
-        card2_title: "Software Applications",
-        card2_desc: "Interactive desktop tools and software for account management and statistics.",
-        
-        card3_title: "Complete Websites",
-        card3_desc: "Multifunctional, responsive websites for any device connected to Flask backends."
+        services_desc: "Services and technological solutions developed with precision and modern standards.",
+        service1_title: "Automation & Python Scripts",
+        service1_desc: "Programming with financial logic, risk calculators, bots, and automated data processing.",
+        service2_title: "Desktop Applications & Software",
+        service2_desc: "Interactive software solutions with graphical user interfaces (GUI) and local database management.",
+        service3_title: "Websites & Web Platforms",
+        service3_desc: "Development of modern, responsive, and dynamic websites connected to backend servers.",
+        footer_rights: "All rights reserved."
     }
 };
