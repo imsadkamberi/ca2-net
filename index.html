@@ -10,23 +10,25 @@
 
     <header>
         <nav>
-            <!-- Logo vetëm me shkrim tipografik teksti -->
             <a href="index.html" class="logo-text">
                 <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
             </a>
 
-            <!-- Grupi i djathtë: Linqet dhe Butoni me Ikonë -->
             <div class="nav-right-group">
-                <div class="nav-links">
+                <div class="nav-links" id="nav-links">
                     <a href="index.html" class="active">Home</a>
                     <a href="cka-mundesojm.html">Çka Mundësojmë</a>
                     <a href="partneret.html">Partnerët</a>
                     <a href="rreth-nesh.html">Rreth Nesh</a>
                 </div>
 
-                <!-- Butoni i ndërrimit të temës -->
                 <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
                     <span id="theme-icon">🌙</span>
+                </button>
+
+                <!-- Butoni Hamburger për Mobile -->
+                <button id="hamburger" class="hamburger-btn" title="Menu">
+                    ☰
                 </button>
             </div>
         </nav>
@@ -40,7 +42,6 @@
         
         <div class="portfolio-grid">
             
-            <!-- Kartela 1: Python -->
             <div class="portfolio-card">
                 <div class="card-image-box python-bg">
                     <code>
@@ -55,7 +56,6 @@
                 </div>
             </div>
 
-            <!-- Kartela 2: Apps -->
             <div class="portfolio-card">
                 <div class="card-image-box app-bg">
                     <div class="app-mockup">
@@ -75,7 +75,6 @@
                 </div>
             </div>
 
-            <!-- Kartela 3: Web -->
             <div class="portfolio-card">
                 <div class="card-image-box web-bg">
                     <div class="web-mockup">
@@ -95,8 +94,8 @@
         </div>
     </div>
 
-    <!-- Script për ndërrimin e temës -->
     <script>
+        // Logjika e Temës (Dark/Light)
         const toggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
@@ -114,12 +113,16 @@
         });
 
         function updateIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.textContent = '☀️';
-            } else {
-                themeIcon.textContent = '🌙';
-            }
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
         }
+
+        // Logjika e Menusë Mobile (Hamburger)
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
     </script>
 
 </body>
