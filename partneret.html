@@ -6,65 +6,78 @@
     <title>Partnerët - CA2NET</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-i18n-title="title.partners">
+<body>
 
     <header>
         <nav>
-            <div class="logo">CA2<span>NET</span></div>
-            <div class="nav-links">
-                <a href="index.html" data-i18n="nav.home">Home</a>
-                <a href="cka-mundesojm.html" data-i18n="nav.what">Çka Mundësojmë</a>
-                <a href="partneret.html" class="active" data-i18n="nav.partners">Partnerët</a>
-                <a href="rreth-nesh.html" data-i18n="nav.about">Rreth Nesh</a>
-            </div>
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="sq">SQ</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="it">IT</button>
-                <button class="lang-btn" data-lang="de">DE</button>
+            <a href="index.html" class="logo-text">
+                <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
+            </a>
+
+            <div class="nav-right-group">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="cka-mundesojm.html">Çka Mundësojmë</a>
+                    <a href="partneret.html" class="active">Partnerët</a>
+                    <a href="rreth-nesh.html">Rreth Nesh</a>
+                </div>
+
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
+                    <span id="theme-icon">🌙</span>
+                </button>
             </div>
         </nav>
     </header>
 
     <div class="container">
-        <h1 data-i18n="partners.h1">Partnerët Tanë</h1>
-        <p data-i18n="partners.p">Bashkëpunojmë me platforma dhe teknologji të njohura për të ofruar zgjidhjet më të mira.</p>
+        <h1>Partnerët Tanë</h1>
+        <p>Bashkëpunëtorët dhe teknologjitë kryesore me të cilat ndërtojmë ekosistemin tonë softuerik.</p>
 
         <div class="portfolio-grid">
-            
             <div class="portfolio-card">
-                <div class="card-image-box python-bg">
-                    <code>
-                        # AI &amp; Data Science<br>
-                        model.predict(data)
-                    </code>
-                </div>
                 <div class="card-content">
-                    <h3 data-i18n="partners.card1.title">Python &amp; AI Tech</h3>
-                    <p data-i18n="partners.card1.desc">Përdorim teknologjitë më të fundit të inteligjencës artificiale dhe gjuhës Python.</p>
+                    <h3>Ekosistemi Python</h3>
+                    <p>Skeleti bazë për zhvillimin e algoritmeve financiare, apikacioneve desktop dhe strukturave automatike.</p>
                 </div>
             </div>
 
             <div class="portfolio-card">
-                <div class="card-image-box web-bg">
-                    <div class="web-mockup">
-                        <div class="web-bar"></div>
-                        <div class="web-layout">
-                            <div class="side-bar"></div>
-                            <div class="main-content"></div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-content">
-                    <h3 data-i18n="partners.card2.title">Infrastruktura Cloud</h3>
-                    <p data-i18n="partners.card2.desc">Servera të shpejtë dhe të sigurt për publikimin e uebsajteve në internet.</p>
+                    <h3>Veglat e Inteligjencës Artificiale</h3>
+                    <p>Integrim i modelimeve dhe ndihmësve inteligjentë për optimizim kodi dhe zgjidhje të shpejta.</p>
                 </div>
             </div>
 
+            <div class="portfolio-card">
+                <div class="card-content">
+                    <h3>Platformat e Trading & Analytics</h3>
+                    <p>Aplikime praktike për përpunimin e të dhënave financiare dhe mjeteve tregtare.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+
 </body>
 </html>
