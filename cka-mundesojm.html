@@ -15,7 +15,7 @@
             </a>
 
             <div class="nav-right-group">
-                <div class="nav-links">
+                <div class="nav-links" id="nav-links">
                     <a href="index.html">Home</a>
                     <a href="cka-mundesojm.html" class="active">Çka Mundësojmë</a>
                     <a href="partneret.html">Partnerët</a>
@@ -24,6 +24,11 @@
 
                 <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
                     <span id="theme-icon">🌙</span>
+                </button>
+
+                <!-- Butoni Hamburger për Mobile -->
+                <button id="hamburger" class="hamburger-btn" title="Menu">
+                    ☰
                 </button>
             </div>
         </nav>
@@ -58,6 +63,7 @@
     </div>
 
     <script>
+        // Logjika e Temës (Dark/Light)
         const toggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
@@ -77,6 +83,14 @@
         function updateIcon(theme) {
             themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
         }
+
+        // Logjika e Menusë Mobile (Hamburger)
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
     </script>
 
 </body>
