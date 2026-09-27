@@ -145,9 +145,44 @@ print("Python Active")</code></pre>
     });
 </script>
 
-<!-- Skedarët për Përkthimin -->
-<script src="translations.js"></script>
-<script src="i18n.js"></script>
+<!-- Skedarët ekzistues të përkthimit -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
+
+    <!-- KODI I RI PËR EFEKTIN TYPEWRITER -->
+    <script>
+        const codeText = `def llogarit_fitimin(hyrja, dalja):\n    return dalja - hyrja\n\nprint("Python Active")`;
+        const codeElement = document.getElementById('typewriter-code');
+        
+        let index = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            if (!codeElement) return;
+
+            if (isDeleting) {
+                codeElement.textContent = codeText.substring(0, index - 1);
+                index--;
+            } else {
+                codeElement.textContent = codeText.substring(0, index + 1);
+                index++;
+            }
+
+            let speed = isDeleting ? 30 : 60;
+
+            if (!isDeleting && index === codeText.length) {
+                speed = 3000;
+                isDeleting = true;
+            } else if (isDeleting && index === 0) {
+                isDeleting = false;
+                speed = 500;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
 
 </body>
 </html>
