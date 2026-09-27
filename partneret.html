@@ -45,111 +45,143 @@
     </nav>
 </header>
 
-    <div class="container">
-        <h1 data-i18n="partners_title">Partnerët Tanë</h1>
-        <p data-i18n="partners_desc">Bashkëpunëtorët dhe teknologjitë kryesore me të cilat ndërtojmë ekosistemin tonë softuerik.</p>
+<div class="container">
+    <h1 data-i18n="partners_title">Partnerët Tanë</h1>
+    <p data-i18n="partners_desc">Bashkëpunëtorët dhe teknologjitë kryesore me të cilat ndërtojmë ekosistemin tonë softuerik.</p>
 
-        <div class="portfolio-grid">
-            <!-- KARTA 1 -->
-            <div class="portfolio-card">
-                <div class="card-visual code-visual">
-                    <pre><code>import python_ecosystem as pe
+    <div class="portfolio-grid">
+        <!-- KARTA 1: Ekosistemi Python (Me Efektin Typewriter) -->
+        <div class="portfolio-card">
+            <div class="card-visual code-visual">
+                <pre><code id="typewriter-partner-code"></code><span class="cursor">|</span></pre>
+            </div>
+            <div class="card-content">
+                <h3 data-i18n="partner1_title">Ekosistemi Python</h3>
+                <p data-i18n="partner1_desc">Skeleti bazë për zhvillimin e algoritmeve financiare, aplikacioneve desktop dhe strukturave automatike.</p>
+            </div>
+        </div>
 
-pe.initialize()
-# Core Engine Active</code></pre>
+        <!-- KARTA 2 -->
+        <div class="portfolio-card">
+            <div class="card-visual app-visual">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="partner1_title">Ekosistemi Python</h3>
-                    <p data-i18n="partner1_desc">Skeleti bazë për zhvillimin e algoritmeve financiare, aplikacioneve desktop dhe strukturave automatike.</p>
+                <div class="window-body">
+                    <span>🤖 AI Models & Tools</span>
                 </div>
             </div>
+            <div class="card-content">
+                <h3 data-i18n="partner2_title">Veglat e Inteligjencës Artificiale</h3>
+                <p data-i18n="partner2_desc">Integrim i modelimeve dhe ndihmësve inteligjentë për optimizim kodi dhe zgjidhje të shpejta.</p>
+            </div>
+        </div>
 
-            <!-- KARTA 2 -->
-            <div class="portfolio-card">
-                <div class="card-visual app-visual">
-                    <div class="window-header">
+        <!-- KARTA 3 -->
+        <div class="portfolio-card">
+            <div class="card-visual web-visual">
+                <div class="browser-bar">
+                    <div class="browser-dots">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <div class="window-body">
-                        <span>🤖 AI Models & Tools</span>
-                    </div>
+                    <div class="url-bar">https://trading-analytics.net</div>
                 </div>
-                <div class="card-content">
-                    <h3 data-i18n="partner2_title">Veglat e Inteligjencës Artificiale</h3>
-                    <p data-i18n="partner2_desc">Integrim i modelimeve dhe ndihmësve inteligjentë për optimizim kodi dhe zgjidhje të shpejta.</p>
+                <div class="web-preview">
+                    <div class="web-hero"></div>
+                    <div class="web-blocks">
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
-
-            <!-- KARTA 3 -->
-            <div class="portfolio-card">
-                <div class="card-visual web-visual">
-                    <div class="browser-bar">
-                        <div class="browser-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="url-bar">https://trading-analytics.net</div>
-                    </div>
-                    <div class="web-preview">
-                        <div class="web-hero"></div>
-                        <div class="web-blocks">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 data-i18n="partner3_title">Platformat e Trading & Analytics</h3>
-                    <p data-i18n="partner3_desc">Aplikime praktike për përpunimin e të dhënave financiare dhe mjeteve tregtare.</p>
-                </div>
+            <div class="card-content">
+                <h3 data-i18n="partner3_title">Platformat e Trading & Analytics</h3>
+                <p data-i18n="partner3_desc">Aplikime praktike për përpunimin e të dhënave financiare dhe mjeteve tregtare.</p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- FOOTER ME COPYRIGHT -->
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
-        </div>
-    </footer>
+<!-- FOOTER ME COPYRIGHT -->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2026 CA2-NET. <span data-i18n="footer_rights">Të gjitha të drejtat të rezervuara.</span></p>
+    </div>
+</footer>
 
-    <script>
-        // Logjika e Temës (Dark/Light)
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+<script>
+    // Logjika e Temës (Dark/Light)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
 
-        function updateIcon(theme) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    function updateIcon(theme) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Logjika e Menusë Mobile (Hamburger)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
+<!-- Skedarët për Përkthimin e Gjuhëve -->
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
+
+<!-- EFEKTI TYPEWRITER PËR PYTHON ECOSYSTEM -->
+<script>
+    const codeTextPartner = `import python_ecosystem as pe\n\npe.initialize()\n# Core Engine Active`;
+    const codeElementPartner = document.getElementById('typewriter-partner-code');
+    
+    let indexPartner = 0;
+    let isDeletingPartner = false;
+
+    function typeEffectPartner() {
+        if (!codeElementPartner) return;
+
+        if (isDeletingPartner) {
+            codeElementPartner.textContent = codeTextPartner.substring(0, indexPartner - 1);
+            indexPartner--;
+        } else {
+            codeElementPartner.textContent = codeTextPartner.substring(0, indexPartner + 1);
+            indexPartner++;
         }
 
-        // Logjika e Menusë Mobile (Hamburger)
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
+        let speed = isDeletingPartner ? 30 : 60;
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    </script>
+        if (!isDeletingPartner && indexPartner === codeTextPartner.length) {
+            speed = 3000;
+            isDeletingPartner = true;
+        } else if (isDeletingPartner && indexPartner === 0) {
+            isDeletingPartner = false;
+            speed = 500;
+        }
 
-    <!-- Skedarët për Përkthimin e Gjuhëve -->
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+        setTimeout(typeEffectPartner, speed);
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffectPartner);
+</script>
 
 </body>
 </html>
