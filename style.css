@@ -11,13 +11,13 @@
     --header-border: rgba(0, 102, 255, 0.2);
     
     --card-bg: rgba(255, 255, 255, 0.7);
-    --card-border: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(0, 102, 255, 0.15);
     --card-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     --card-hover-border: #0066ff;
     --card-hover-glow: rgba(0, 102, 255, 0.25);
     
     --heading-color: #0f172a;
-    --box-inner-bg: rgba(210, 220, 232, 0.7);
+    --box-inner-bg: rgba(0, 0, 0, 0.06);
     --code-text: #0284c7;
     --mobile-menu-bg: rgba(220, 228, 236, 0.98);
 }
@@ -38,7 +38,7 @@
     --card-hover-glow: rgba(0, 102, 255, 0.4);
     
     --heading-color: #ffffff;
-    --box-inner-bg: rgba(8, 12, 20, 0.8);
+    --box-inner-bg: rgba(0, 0, 0, 0.35);
     --code-text: #38bdf8;
     --mobile-menu-bg: rgba(8, 12, 20, 0.98);
 }
@@ -153,7 +153,6 @@ nav {
     width: 100%;
 }
 
-/* SELEKTORI I GJUHËVE */
 .lang-dropdown {
     background: var(--card-bg);
     border: 1px solid var(--header-border);
@@ -165,19 +164,11 @@ nav {
     cursor: pointer;
     outline: none;
     backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-}
-
-.lang-dropdown:hover {
-    border-color: #0066ff;
-    box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
 }
 
 .lang-dropdown option {
     background-color: var(--bg-color);
     color: var(--heading-color);
-    padding: 8px;
-    font-weight: 600;
 }
 
 .theme-toggle-btn {
@@ -207,14 +198,13 @@ nav {
     font-size: 24px;
     color: var(--heading-color);
     cursor: pointer;
-    padding: 5px;
 }
 
 /* =========================================================
-   4. STRUKTURA DHE KARTAT E TË CILAVE U NDRYSHUA MADHËSIA
+   4. STRUKTURA DHE KARTAT
    ========================================================= */
 .container {
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 40px auto;
     padding: 0 20px;
     text-align: center;
@@ -243,7 +233,7 @@ p {
 }
 
 .portfolio-card {
-    width: 280px;
+    width: 290px;
     background: var(--card-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -255,7 +245,6 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
 .portfolio-card:hover {
@@ -265,21 +254,21 @@ p {
 }
 
 /* =========================================================
-   5. PAMJET VIZUALE TË KARTAVE (CODE, APP, WEB)
+   5. PAMJET VIZUALE TË KARTAVE (RREGULLIMI I PRISHJES)
    ========================================================= */
 .card-visual {
     width: 100%;
-    height: 130px;
+    height: 140px;
     background: var(--box-inner-bg);
     border-radius: 10px;
     border: 1px solid var(--card-border);
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
 }
 
-/* Python Code Visual */
+/* Code Visual (Python) */
 .code-visual {
     padding: 12px;
     text-align: left;
@@ -297,58 +286,65 @@ p {
     line-height: 1.4;
 }
 
-/* App Visual */
-.app-visual .window-header,
-.web-visual .browser-bar {
-    background: rgba(0, 0, 0, 0.1);
-    padding: 6px 10px;
+/* App Visual & Web Visual Headers */
+.window-header,
+.browser-bar {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 8px 10px;
     display: flex;
     align-items: center;
     gap: 6px;
     border-bottom: 1px solid var(--card-border);
+    width: 100%;
 }
 
 .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    display: inline-block;
 }
 .dot.red { background-color: #ef4444; }
 .dot.yellow { background-color: #f59e0b; }
 .dot.green { background-color: #10b981; }
 
-.app-visual .window-body {
+.window-body {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--heading-color);
 }
 
-/* Web Visual */
-.web-visual .url-bar {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 2px 8px;
+/* Web Visual URL & Body */
+.browser-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.url-bar {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 3px 8px;
     border-radius: 4px;
     font-size: 10px;
     color: var(--text-muted);
     width: 100%;
     text-align: left;
-    margin-left: 6px;
+    margin-left: 4px;
 }
 
 .web-preview {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     height: 100%;
 }
 
 .web-hero {
-    height: 30px;
+    height: 32px;
     background: linear-gradient(90deg, #0066ff, #00c8ff);
     border-radius: 4px;
 }
@@ -360,14 +356,15 @@ p {
 
 .web-blocks span {
     flex: 1;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.15);
+    height: 22px;
+    background: rgba(255, 255, 255, 0.12);
     border-radius: 4px;
 }
 
-/* Card Text Content */
+/* Card Content Text */
 .card-content {
-    padding: 5px 0;
+    text-align: center;
+    width: 100%;
 }
 
 .card-content h3 {
@@ -385,7 +382,7 @@ p {
 }
 
 /* =========================================================
-   6. FOOTER & COPYRIGHT (I RREGULLUAR)
+   6. FOOTER & COPYRIGHT (I QENDROUAR MË MES)
    ========================================================= */
 footer {
     width: 100%;
@@ -394,7 +391,7 @@ footer {
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--header-border);
     padding: 20px 0;
-    margin-top: 50px;
+    margin-top: auto;
     text-align: center;
 }
 
@@ -412,16 +409,12 @@ footer {
 }
 
 /* =========================================================
-   7. MEDIA QUERIES (PËR EKRA NE CELULAR / TABLET)
+   7. MEDIA QUERIES
    ========================================================= */
 @media (max-width: 768px) {
     nav {
         height: 70px;
         padding: 0 16px;
-    }
-
-    .logo-text {
-        font-size: 22px;
     }
 
     .hamburger-btn {
@@ -439,17 +432,11 @@ footer {
         padding: 20px 0;
         gap: 20px;
         border-bottom: 1px solid var(--header-border);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         display: none;
     }
 
     .nav-links.show {
         display: flex;
-    }
-
-    .container {
-        margin: 20px auto;
-        padding: 0 16px;
     }
 
     .portfolio-card {
