@@ -1,28 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const langSelect = document.getElementById("lang-select");
-    const savedLang = localStorage.getItem("preferred_lang") || "sq";
+document.addEventListener('DOMContentLoaded', () => {
+    const langSelect = document.getElementById('lang-select');
+    const savedLang = localStorage.getItem('lang') || 'sq';
 
     if (langSelect) {
         langSelect.value = savedLang;
-        setLanguage(savedLang);
+        updateLanguage(savedLang);
 
-        langSelect.addEventListener("change", (e) => {
+        langSelect.addEventListener('change', (e) => {
             const selectedLang = e.target.value;
-            localStorage.setItem("preferred_lang", selectedLang);
-            setLanguage(selectedLang);
+            localStorage.setItem('lang', selectedLang);
+            updateLanguage(selectedLang);
         });
     } else {
-        setLanguage(savedLang);
+        updateLanguage(savedLang);
     }
 });
 
-function setLanguage(lang) {
-    if (!translations[lang]) return;
-
-    const elements = document.querySelectorAll("[data-i18n]");
-    elements.forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang][key]) {
+function updateLanguage(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
             el.textContent = translations[lang][key];
         }
     });
