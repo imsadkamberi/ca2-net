@@ -1,40 +1,29 @@
-(function () {
-    var supportedLangs = ['sq', 'en', 'it', 'de'];
-    var stored = localStorage.getItem('ca2net-lang');
-    var lang = supportedLangs.indexOf(stored) !== -1 ? stored : 'sq';
+document.addEventListener("DOMContentLoaded", () => {
+    const langSelect = document.getElementById("lang-select");
+    const savedLang = localStorage.getItem("preferred_lang") || "sq";
 
-    function applyLang(newLang) {
-        var dict = window.translations[newLang];
-        if (!dict) return;
+    if (langSelect) {
+        langSelect.value = savedLang;
+        setLanguage(savedLang);
 
-        document.querySelectorAll('[data-i18n]').forEach(function (el) {
-            var key = el.getAttribute('data-i18n');
-            if (dict[key] !== undefined) {
-                el.innerHTML = dict[key];
-            }
+        langSelect.addEventListener("change", (e) => {
+            const selectedLang = e.target.value;
+            localStorage.setItem("preferred_lang", selectedLang);
+            setLanguage(selectedLang);
         });
-
-        var titleKey = document.body.getAttribute('data-i18n-title');
-        if (titleKey && dict[titleKey]) {
-            document.title = dict[titleKey];
-        }
-
-        document.documentElement.setAttribute('lang', newLang);
-
-        document.querySelectorAll('.lang-btn').forEach(function (btn) {
-            btn.classList.toggle('active', btn.getAttribute('data-lang') === newLang);
-        });
-
-        localStorage.setItem('ca2net-lang', newLang);
-        lang = newLang;
+    } else {
+        setLanguage(savedLang);
     }
+});
 
-    document.addEventListener('DOMContentLoaded', function () {
-        applyLang(lang);
-        document.querySelectorAll('.lang-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                applyLang(btn.getAttribute('data-lang'));
-            });
-        });
+function setLanguage(lang) {
+    if (!translations[lang]) return;
+
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
     });
-})();
+}
