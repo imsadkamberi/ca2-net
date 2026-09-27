@@ -6,31 +6,37 @@
     <title>Home - CA2NET</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-i18n-title="title.home">
+<body>
 
     <header>
         <nav>
-            <div class="logo">CA2<span>NET</span></div>
-            <div class="nav-links">
-                <a href="index.html" class="active" data-i18n="nav.home">Home</a>
-                <a href="cka-mundesojm.html" data-i18n="nav.what">Çka Mundësojmë</a>
-                <a href="partneret.html" data-i18n="nav.partners">Partnerët</a>
-                <a href="rreth-nesh.html" data-i18n="nav.about">Rreth Nesh</a>
-            </div>
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="sq">SQ</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="it">IT</button>
-                <button class="lang-btn" data-lang="de">DE</button>
+            <!-- Logo vetëm me shkrim tipografik teksti -->
+            <a href="index.html" class="logo-text">
+                <span class="logo-gold">CA2</span><span class="logo-blue">-NET</span>
+            </a>
+
+            <!-- Grupi i djathtë: Linqet dhe Butoni me Ikonë -->
+            <div class="nav-right-group">
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="cka-mundesojm.html">Çka Mundësojmë</a>
+                    <a href="partneret.html">Partnerët</a>
+                    <a href="rreth-nesh.html">Rreth Nesh</a>
+                </div>
+
+                <!-- Butoni i ndërrimit të temës -->
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ndrysho Temën">
+                    <span id="theme-icon">🌙</span>
+                </button>
             </div>
         </nav>
     </header>
 
     <div class="container">
-        <h1 data-i18n="home.h1">Mirë se vini në Platformën Tonë!</h1>
-        <p data-i18n="home.p">Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.</p>
+        <h1>Mirë se vini në Platformën Tonë!</h1>
+        <p>Eksploroni projektet tona kryesore të ndërtuara me Python, inteligjencë artificiale dhe teknologji ueb moderne.</p>
 
-        <h2 class="section-title" data-i18n="home.sectionTitle">Portofoli i Projekteve</h2>
+        <h2 class="section-title">Portofoli i Projekteve</h2>
         
         <div class="portfolio-grid">
             
@@ -44,8 +50,8 @@
                     </code>
                 </div>
                 <div class="card-content">
-                    <h3 data-i18n="home.card1.title">Kodi &amp; Logjika në Python</h3>
-                    <p data-i18n="home.card1.desc">Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.</p>
+                    <h3>Kodi & Logjika në Python</h3>
+                    <p>Skripte të automatizuara, llogaritje financiare dhe përpunim i të dhënave me algoritme të shpejta.</p>
                 </div>
             </div>
 
@@ -59,13 +65,13 @@
                             <span class="dot green"></span>
                         </div>
                         <div class="mockup-body">
-                            <span data-i18n="home.card2.mockup">📊 App Trading &amp; Analytics</span>
+                            <span>📊 App Trading & Analytics</span>
                         </div>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3 data-i18n="home.card2.title">Aplikacione Softuerike</h3>
-                    <p data-i18n="home.card2.desc">Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.</p>
+                    <h3>Aplikacione Softuerike</h3>
+                    <p>Vegla interaktive desktop dhe mjetet për menaxhimin e llogarive e statistikave.</p>
                 </div>
             </div>
 
@@ -81,15 +87,40 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3 data-i18n="home.card3.title">Faqe Web të Kompletuara</h3>
-                    <p data-i18n="home.card3.desc">Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask.</p>
+                    <h3>Faqe Web të Kompletuara</h3>
+                    <p>Uebsajte multifunksionale, responsive për çdo pajisje dhe të lidhura me servera Flask.</p>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
+    <!-- Script për ndërrimin e temës -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+            } else {
+                themeIcon.textContent = '🌙';
+            }
+        }
+    </script>
+
 </body>
 </html>
